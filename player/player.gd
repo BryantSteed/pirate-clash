@@ -10,18 +10,18 @@ extends CharacterBody2D
 @export var coyote_time := 0.1           # can still jump this long after walking off a ledge
 @export var jump_buffer := 0.1           # a jump pressed this long before landing still counts
 @export var fire_cooldown := 0.25        # minimum seconds between shots
-@export var recoil_strength := 450.0     # kick applied opposite the shot direction (px/s)
-@export var recoil_strength_second_shot := 150.0
+@export var recoil_strength := 500.0     # kick applied opposite the shot direction (px/s)
+@export var recoil_strength_second_shot := 300.0
 @export var max_recoil_speed := 900.0    # recoil can't push total speed above this (px/s)
 @export var air_acceleration := 1500.0   # steering in the air (vs acceleration on the ground)
 @export var air_friction := 600.0        # coasting in the air (vs friction on the ground)
 @export var overspeed_decel := 900.0     # how fast momentum above `speed` (e.g. recoil) bleeds off
-@export var max_air_shots := 2
+@export var max_air_shots := 2          # shots allowed while airborne; ground shots are free
 
 var _coyote_timer := 0.0
 var _jump_buffer_timer := 0.0
 var _fire_cooldown_timer := 0.0
-var _air_shots := 0
+var _air_shots := 0          # shots fired while airborne since the last landing
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -42,11 +42,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	# _unhandled_input (not _input) so clicks on UI buttons don't also fire.
 	var shoot_action_pressed := event.is_action_pressed("shoot")
 	var fire_cooldown_finished := _fire_cooldown_timer <= 0
-	var air_shot_limit_not_exceeded := self._air_shots < self.max_air_shots
-	
+	var air_shot_limit_not_exceeded := is_on_floor() or self._air_shots < self.max_air_shots
+
 	if shoot_action_pressed and fire_cooldown_finished and air_shot_limit_not_exceeded:
 		_shoot()
-		self._air_shots += 1
 
 
 func _physics_process(delta: float) -> void:
@@ -75,22 +74,34 @@ func _shoot() -> void:
 	var dir := global_position.direction_to(get_global_mouse_position())
 	# Add to the level, not the player, so bullets don't follow the player around.
 	get_parent().add_child(PlayerBullet.create(global_position, dir, self))
-	if dir.y > 0:
-		velocity.y = minf(velocity.y, 0.0)   # shooting downward cancels the fall, so the boost is consistent
-	# Cap the result so rapid shots don't stack into huge speeds. If we were already
-	# moving faster than the cap (e.g. a long fall), recoil can redirect us but not speed us up.
-	var cap := maxf(max_recoil_speed, velocity.length())
-	var recoil_modifier
-	if self._air_shots == 0:
+	# Ground shots and the first shot in the air get full recoil; later air shots get the weaker one.
+	var recoil_modifier: float
+	if is_on_floor() or self._air_shots == 0:
 		recoil_modifier = self.recoil_strength
 	else:
 		recoil_modifier = self.recoil_strength_second_shot
-	velocity = (velocity - dir * recoil_strength).limit_length(cap)
+	if not is_on_floor():
+		self._air_shots += 1
+	var recoil := -dir * recoil_modifier
+	# Cap the result so rapid shots don't stack into huge speeds. If we were already
+	# moving faster than the cap (e.g. a long fall), recoil can redirect us but not speed us up.
+	var cap := maxf(max_recoil_speed, velocity.length())
+	if recoil.y < 0:
+		# Shooting downward: guarantee at least this much upward speed instead of adding to it,
+		# so the kick replaces a fall but doesn't stack on top of a jump.
+		velocity.y = minf(velocity.y, recoil.y)
+		velocity.x += recoil.x
+	else:
+		velocity += recoil
+	velocity = velocity.limit_length(cap)
 
 
 func _apply_gravity(delta: float) -> void:
 	if is_on_floor():
-		self._air_shots = 0
+		# is_on_floor() is still true for one tick after a jump or launch, so only a real
+		# landing (not moving up) refills air shots.
+		if velocity.y >= 0:
+			self._air_shots = 0
 		return
 	var gravity := get_gravity()
 	if velocity.y > 0:
