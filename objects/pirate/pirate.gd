@@ -1,3 +1,4 @@
+class_name Pirate
 extends CharacterBody2D
 
 @export var shoot_interval := 2.0        # seconds between shots
@@ -19,6 +20,11 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	move_and_slide()
+
+
+func hit() -> void:
+	# Called by a player bullet on contact. One hit kills for now.
+	queue_free()
 
 
 func _shoot() -> void:

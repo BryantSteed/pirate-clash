@@ -9,9 +9,11 @@ extends CharacterBody2D
 @export var jump_cut := 0.5              # releasing jump early keeps this fraction of upward speed
 @export var coyote_time := 0.1           # can still jump this long after walking off a ledge
 @export var jump_buffer := 0.1           # a jump pressed this long before landing still counts
+@export var fire_cooldown := 0.25        # minimum seconds between shots
 
 var _coyote_timer := 0.0
 var _jump_buffer_timer := 0.0
+var _fire_cooldown_timer := 0.0
 
 signal was_hit
 
@@ -26,11 +28,25 @@ func hit() -> void:
 	print("Player hit!")
 	was_hit.emit()
 
+func _unhandled_input(event: InputEvent) -> void:
+	# _unhandled_input (not _input) so clicks on UI buttons don't also fire.
+	if event.is_action_pressed("shoot") and _fire_cooldown_timer <= 0:
+		_shoot()
+
+
 func _physics_process(delta: float) -> void:
+	_fire_cooldown_timer -= delta
 	_apply_gravity(delta)
 	_handle_jump(delta)
 	_handle_horizontal(delta)
 	move_and_slide()
+
+
+func _shoot() -> void:
+	_fire_cooldown_timer = fire_cooldown
+	var dir := global_position.direction_to(get_global_mouse_position())
+	# Add to the level, not the player, so bullets don't follow the player around.
+	get_parent().add_child(PlayerBullet.create(global_position, dir, self))
 
 
 func _apply_gravity(delta: float) -> void:
