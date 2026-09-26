@@ -13,6 +13,11 @@ extends CharacterBody2D
 var _coyote_timer := 0.0
 var _jump_buffer_timer := 0.0
 
+var crystal_count := 0
+
+func add_crystal() -> void:
+	# Called by crystal when player enter it
+	crystal_count += 1
 
 func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
