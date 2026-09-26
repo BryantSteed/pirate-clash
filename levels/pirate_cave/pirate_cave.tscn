@@ -1,13 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://brdjb6lpkcdhw"]
+[gd_scene load_steps=7 format=3 uid="uid://brdjb6lpkcdhw"]
 
 [ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://levels/pirate_cave/pirate_cave.gd" id="1_iqt3r"]
 [ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://player/player.tscn" id="2_5yxa8"]
+[ext_resource type="Texture2D" uid="uid://dmp8tadh8d0cl" path="res://art/Crystal Cove Background.png" id="2_t40pf"]
 [ext_resource type="PackedScene" uid="uid://mvrfx4sp10s8" path="res://objects/platform/platform.tscn" id="3_3fj1w"]
 [ext_resource type="Script" uid="uid://cadm0glh6rk40" path="res://levels/level_bounds.gd" id="4_bounds"]
 [ext_resource type="PackedScene" uid="uid://cd410nrue1gmg" path="res://objects/pirate/pirate.tscn" id="5_axm81"]
 
 [node name="PirateCave" type="Node2D"]
 script = ExtResource("1_iqt3r")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(1152, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("2_t40pf")
+centered = false
+offset = Vector2(0, -30)
 
 [node name="LevelBounds" type="ReferenceRect" parent="." groups=["level_bounds"]]
 offset_top = -47.0
