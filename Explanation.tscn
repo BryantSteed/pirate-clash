@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://buyu66gudupft"]
+
+[ext_resource type="Script" uid="uid://bvtc8eixqcj0n" path="res://continue_button.gd" id="1_g5kft"]
+
+[node name="Explanation" type="Node"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 318.0
+offset_top = 277.0
+offset_right = 869.0
+offset_bottom = 317.0
+text = "There's been a mutiny! You must collect the crystals or you will die!!!!"
+
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 373.0
+offset_top = 336.0
+offset_right = 760.0
+offset_bottom = 456.0
+text = "I Accept This Great Challenge!!"
+script = ExtResource("1_g5kft")
