@@ -10,7 +10,7 @@ metadata={
 
 [deps]
 
-source_file="res://Art/Crystal Cove Background.png"
+source_file="res://art/Crystal Cove Background.png"
 dest_files=["res://.godot/imported/Crystal Cove Background.png-e735e2e08a3c249429bf5266d1164a45.ctex"]
 
 [params]

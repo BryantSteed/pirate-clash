@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://brdjb6lpkcdhw"]
 
-[ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://pirate_cave.gd" id="1_iqt3r"]
-[ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://Player.tscn" id="2_5yxa8"]
-[ext_resource type="PackedScene" uid="uid://mvrfx4sp10s8" path="res://floor.tscn" id="3_3fj1w"]
-[ext_resource type="PackedScene" uid="uid://m3ds7uea7dov" path="res://Crystal.tscn" id="4_hnc1q"]
+[ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://levels/pirate_cave/pirate_cave.gd" id="1_iqt3r"]
+[ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://player/player.tscn" id="2_5yxa8"]
+[ext_resource type="PackedScene" uid="uid://mvrfx4sp10s8" path="res://objects/floor/floor.tscn" id="3_3fj1w"]
+[ext_resource type="PackedScene" uid="uid://m3ds7uea7dov" path="res://objects/crystal/crystal.tscn" id="4_hnc1q"]
 
 [node name="PirateCave" type="Node"]
 script = ExtResource("1_iqt3r")

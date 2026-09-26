@@ -1,6 +1,5 @@
 extends Button
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.pressed.connect(self._on_press)
@@ -11,6 +10,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_press() -> void:
-	self.text = "Chaning to GamePlay"
-	var pirateCaveScene = preload("res://pirate_cave.tscn")
-	get_tree().change_scene_to_packed(pirateCaveScene)
+	self.text = "You just pressed this button!"
+	var explanationScene := preload("res://menus/explanation.tscn")
+	get_tree().change_scene_to_packed(explanationScene)
