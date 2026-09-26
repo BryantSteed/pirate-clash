@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj1po1odwlabg"]
+[gd_scene load_steps=4 format=3 uid="uid://cj1po1odwlabg"]
 
 [ext_resource type="Script" uid="uid://n3yoyl2b21uh" path="res://player/player.gd" id="1_xhfnw"]
+[ext_resource type="Script" path="res://player/player_camera.gd" id="2_camera"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhfnw"]
 size = Vector2(40, 40)
@@ -19,3 +20,4 @@ color = Color(0.04755766, 0.047557645, 0.047557645, 1)
 shape = SubResource("RectangleShape2D_xhfnw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_camera")
