@@ -1,42 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://brdjb6lpkcdhw"]
+[gd_scene load_steps=4 format=3 uid="uid://brdjb6lpkcdhw"]
 
 [ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://levels/pirate_cave/pirate_cave.gd" id="1_iqt3r"]
 [ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://player/player.tscn" id="2_5yxa8"]
-[ext_resource type="PackedScene" uid="uid://mvrfx4sp10s8" path="res://objects/floor/floor.tscn" id="3_3fj1w"]
-[ext_resource type="PackedScene" uid="uid://m3ds7uea7dov" path="res://objects/crystal/crystal.tscn" id="4_hnc1q"]
-[ext_resource type="PackedScene" uid="uid://cd410nrue1gmg" path="res://objects/pirate/pirate.tscn" id="5_axm81"]
+[ext_resource type="PackedScene" uid="uid://mvrfx4sp10s8" path="res://objects/platform/platform.tscn" id="3_3fj1w"]
 
-[node name="PirateCave" type="Node"]
+[node name="PirateCave" type="Node2D"]
 script = ExtResource("1_iqt3r")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9552538, 0.91248715, 0.9311443, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_5yxa8")]
 position = Vector2(544, 302)
 
 [node name="Floor" parent="." instance=ExtResource("3_3fj1w")]
-position = Vector2(-2, 636)
-
-[node name="Crystal2" parent="." instance=ExtResource("4_hnc1q")]
-position = Vector2(396.9008, 591.7662)
-
-[node name="Crystal4" parent="." instance=ExtResource("4_hnc1q")]
-position = Vector2(906.3109, 591.7662)
-
-[node name="Crystal3" parent="." instance=ExtResource("4_hnc1q")]
-position = Vector2(79.8808, 597.81616)
-
-[node name="Crystal5" parent="." instance=ExtResource("4_hnc1q")]
-position = Vector2(744.1709, 590.55615)
-
-[node name="Crystal" parent="." instance=ExtResource("4_hnc1q")]
-position = Vector2(248, 603)
-
-[node name="Pirate" parent="." instance=ExtResource("5_axm81")]
-position = Vector2(1029, 490)
+position = Vector2(576, 591)
+size = Vector2(1152, 20)

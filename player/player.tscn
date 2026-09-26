@@ -17,3 +17,5 @@ color = Color(0.04755766, 0.047557645, 0.047557645, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xhfnw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
