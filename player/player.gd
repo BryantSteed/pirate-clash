@@ -15,6 +15,8 @@ var _coyote_timer := 0.0
 var _jump_buffer_timer := 0.0
 var _fire_cooldown_timer := 0.0
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 signal was_hit
 
 var crystal_count := 0
@@ -40,6 +42,19 @@ func _physics_process(delta: float) -> void:
 	_handle_jump(delta)
 	_handle_horizontal(delta)
 	move_and_slide()
+	_update_animation()
+
+
+func _update_animation() -> void:
+	# Face the way we're moving; keep the last facing when standing still.
+	if velocity.x != 0:
+		sprite.flip_h = velocity.x < 0
+	# play() on the animation that's already playing is a no-op, so calling it every tick is fine.
+	# Once there's a "run" animation: sprite.play("run" if absf(velocity.x) > 10 else "idle")
+	if absf(velocity.x) > 10:
+		sprite.play("run")
+	else:
+		sprite.play("idle")
 
 
 func _shoot() -> void:
