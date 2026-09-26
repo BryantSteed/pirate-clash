@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cj1po1odwlabg"]
+
+[node name="Player" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.04755766, 0.047557645, 0.047557645, 1)

@@ -12,3 +12,5 @@ func _process(delta: float) -> void:
 
 func _on_press() -> void:
 	self.text = "Chaning to GamePlay"
+	var pirateCaveScene = preload("res://pirate_cave.tscn")
+	get_tree().change_scene_to_packed(pirateCaveScene)

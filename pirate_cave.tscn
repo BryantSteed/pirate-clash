@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://brdjb6lpkcdhw"]
+
+[ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://pirate_cave.gd" id="1_iqt3r"]
+[ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://Player.tscn" id="2_5yxa8"]
+
+[node name="PirateCave" type="Node"]
+script = ExtResource("1_iqt3r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9552538, 0.91248715, 0.9311443, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_5yxa8")]
+position = Vector2(534, 289)
