@@ -1,3 +1,86 @@
-[gd_scene format=3 uid="uid://bsw77yonayhhb"]
+[gd_scene load_steps=13 format=3 uid="uid://bsw77yonayhhb"]
+
+[ext_resource type="Script" uid="uid://dk1u5775vfttt" path="res://objects/big_crystal/big_crystal.gd" id="1_hmpw0"]
+[ext_resource type="Texture2D" uid="uid://mx2rlig0gybg" path="res://art/Big boy Crystals normal-Sheet.png" id="1_nkonc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkonc"]
+atlas = ExtResource("1_nkonc")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmpw0"]
+atlas = ExtResource("1_nkonc")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joilf"]
+atlas = ExtResource("1_nkonc")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pt504"]
+atlas = ExtResource("1_nkonc")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0rxc"]
+atlas = ExtResource("1_nkonc")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks0mc"]
+atlas = ExtResource("1_nkonc")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx34n"]
+atlas = ExtResource("1_nkonc")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v60o"]
+atlas = ExtResource("1_nkonc")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_edtnj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkonc")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmpw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joilf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pt504")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0rxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks0mc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xx34n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v60o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkonc"]
+size = Vector2(107, 125.5)
 
 [node name="BigCrystal" type="Area2D"]
+script = ExtResource("1_hmpw0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_edtnj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.25)
+shape = SubResource("RectangleShape2D_nkonc")
