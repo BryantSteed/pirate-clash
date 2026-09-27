@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://o5vy2ukjbhbh"
+path="res://.godot/imported/Crystal Collect.mp3-51d6388f6dbcd9fad51f682a62552c81.mp3str"
+
+[deps]
+
+source_file="res://Music and SFX/Crystal Collect.mp3"
+dest_files=["res://.godot/imported/Crystal Collect.mp3-51d6388f6dbcd9fad51f682a62552c81.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
