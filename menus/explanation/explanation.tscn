@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://buyu66gudupft"]
 
-[ext_resource type="Script" uid="uid://bvtc8eixqcj0n" path="res://menus/continue_button.gd" id="1_g5kft"]
+[ext_resource type="Script" uid="uid://bvtc8eixqcj0n" path="res://menus/explanation/continue_button.gd" id="1_g5kft"]
 
 [node name="Explanation" type="Node"]
 

@@ -262,7 +262,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yw30f"]
@@ -376,7 +376,7 @@ script = ExtResource("2_camera")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yllr7")
-animation = &"idle"
+animation = &"run"
 
 [node name="RightArmCollision" type="CollisionShape2D" parent="."]
 position = Vector2(14.000001, 6.0000005)

@@ -11,5 +11,5 @@ func _process(delta: float) -> void:
 
 func _on_press() -> void:
 	self.text = "You just pressed this button!"
-	var explanationScene := preload("res://menus/explanation.tscn")
+	var explanationScene := preload("res://menus/explanation/explanation.tscn")
 	get_tree().change_scene_to_packed(explanationScene)
