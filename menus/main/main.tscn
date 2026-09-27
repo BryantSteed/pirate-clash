@@ -13,9 +13,9 @@ grow_vertical = 2
 color = Color(1.4439225e-06, 0.6891762, 0.238781, 1)
 
 [node name="StartButton" type="Button" parent="."]
-offset_left = 380.0
-offset_top = 424.0
-offset_right = 758.0
-offset_bottom = 522.0
+offset_left = 51.0
+offset_top = 91.0
+offset_right = 429.0
+offset_bottom = 189.0
 text = "Start Game"
 script = ExtResource("1_ig7tw")
