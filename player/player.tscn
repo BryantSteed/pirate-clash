@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cj1po1odwlabg"]
+[gd_scene load_steps=58 format=3 uid="uid://cj1po1odwlabg"]
 
 [ext_resource type="Script" uid="uid://n3yoyl2b21uh" path="res://player/player.gd" id="1_xhfnw"]
 [ext_resource type="Script" uid="uid://p32tw0gdjr1e" path="res://player/player_camera.gd" id="2_camera"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b1bk6fojfvntn" path="res://art/player hurt.png" id="3_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://bf21pipf86rec" path="res://art/Player jump-Sheet.png" id="4_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://chyv5eqkrhd70" path="res://art/Player Run Sheet.png" id="4_yw30f"]
+[ext_resource type="Texture2D" uid="uid://bi1558lnx68wu" path="res://art/Gun Shoot sheet.png" id="7_boad6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhfnw"]
 size = Vector2(24.5, 54)
@@ -270,6 +271,98 @@ size = Vector2(25, 9.378157)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjkh3"]
 size = Vector2(28, 9)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnw6m"]
+atlas = ExtResource("7_boad6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1so5t"]
+atlas = ExtResource("7_boad6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55jnj"]
+atlas = ExtResource("7_boad6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx5ib"]
+atlas = ExtResource("7_boad6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2xo5"]
+atlas = ExtResource("7_boad6")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_art4l"]
+atlas = ExtResource("7_boad6")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjxoa"]
+atlas = ExtResource("7_boad6")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gswnw"]
+atlas = ExtResource("7_boad6")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcnuv"]
+atlas = ExtResource("7_boad6")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j55il"]
+atlas = ExtResource("7_boad6")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjies"]
+atlas = ExtResource("7_boad6")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmwog"]
+atlas = ExtResource("7_boad6")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8pxes"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnw6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1so5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55jnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx5ib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2xo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_art4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjxoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gswnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcnuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j55il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjies")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmwog")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 30.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_xhfnw")
 
@@ -282,7 +375,7 @@ script = ExtResource("2_camera")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yllr7")
-animation = &"hit"
+animation = &"idle"
 
 [node name="RightArmCollision" type="CollisionShape2D" parent="."]
 position = Vector2(14.000001, 6.0000005)
@@ -293,3 +386,11 @@ shape = SubResource("RectangleShape2D_yw30f")
 position = Vector2(-16.000004, 4.000004)
 rotation = -0.79055953
 shape = SubResource("RectangleShape2D_qjkh3")
+
+[node name="GunPivot" type="Node2D" parent="."]
+position = Vector2(23, 13)
+
+[node name="GunSprite" type="AnimatedSprite2D" parent="GunPivot"]
+position = Vector2(24, -15)
+sprite_frames = SubResource("SpriteFrames_8pxes")
+animation = &"shoot"

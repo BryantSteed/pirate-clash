@@ -18,6 +18,8 @@ extends CharacterBody2D
 @export var overspeed_decel := 900.0     # how fast momentum above `speed` (e.g. recoil) bleeds off
 @export var max_air_shots := 2          # shots allowed while airborne; ground shots are free
 @export var hit_stun_time := 0.5         # after a hit: frozen in place (no gravity/input) and can't be hit again
+@export var air_hand_raise := 30.0       # how far the gun hand moves up while the "jump" pose shows (px)
+@export var muzzle_offset := Vector2(11, 3)  # barrel tip, in GunSprite's local space (from the gun art)
 
 var _coyote_timer := 0.0
 var _jump_buffer_timer := 0.0
@@ -26,6 +28,9 @@ var _air_shots := 0          # shots fired while airborne since the last landing
 var _stun_timer := 0.0       # > 0 while frozen and invulnerable after a hit (the "hit" animation shows)
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var gun_pivot: Node2D = $GunPivot
+@onready var _hand_position: Vector2 = gun_pivot.position   # right-hand anchor, as placed in the editor
+@onready var gun_sprite: AnimatedSprite2D = $GunPivot/GunSprite
 
 signal was_hit
 
@@ -82,6 +87,33 @@ func _physics_process(delta: float) -> void:
 	_update_animation()
 
 
+func _process(_delta: float) -> void:
+	# Aiming is purely visual, so it runs every rendered frame for smooth tracking.
+	gun_pivot.visible = _stun_timer <= 0     # the gun disappears while the hit stun lasts
+	_aim_gun()
+
+
+func _aim_gun() -> void:
+	var mouse := get_global_mouse_position()
+	# Which side is decided from the player's center, not the hand, so the swap point
+	# doesn't move as the hand moves (that would make it flicker between hands).
+	var aiming_left := mouse.x < global_position.x
+
+	# In the air the arm is drawn higher, so raise the hand to match the "jump" pose.
+	var hand := _hand_position
+	if sprite.animation == &"jump":
+		hand.y -= air_hand_raise
+
+	# Swap hands: mirror the anchor across the player's center, and mirror the gun with it.
+	gun_pivot.position = Vector2(-hand.x if aiming_left else hand.x, hand.y)
+	gun_pivot.scale.x = -1 if aiming_left else 1
+
+	# Rotate about the hand so the barrel (the gun's +x) points at the mouse.
+	# Mirrored, the barrel points along -x, i.e. rotation + PI, hence the + PI.
+	var to_mouse := mouse - gun_pivot.global_position
+	gun_pivot.rotation = to_mouse.angle() + (PI if aiming_left else 0.0)
+
+
 func _update_animation() -> void:
 	# Face the way we're moving; keep the last facing when standing still.
 	if velocity.x != 0:
@@ -98,11 +130,27 @@ func _update_animation() -> void:
 		sprite.play("idle")
 
 
+func _ready() -> void:
+	# "shoot" doesn't loop, so it stops on its last frame; stop() rewinds to frame 0 (the resting gun).
+	gun_sprite.animation_finished.connect(gun_sprite.stop)
+
+
 func _shoot() -> void:
 	_fire_cooldown_timer = fire_cooldown
-	var dir := global_position.direction_to(get_global_mouse_position())
+	gun_sprite.stop()        # restart from frame 0 even if the last shot's animation is still playing
+	gun_sprite.play("shoot")
+	# Spawn at the barrel tip. to_global() applies the whole chain (sprite position, pivot
+	# rotation, hand-swap mirror, player position), so this follows the gun however it's aimed.
+	var muzzle := gun_sprite.to_global(muzzle_offset)
+	var mouse := get_global_mouse_position()
+	var dir := muzzle.direction_to(mouse)
+	# If the cursor is on top of or behind the muzzle, muzzle->mouse would point backwards;
+	# fall back to the way the barrel is facing.
+	var barrel_dir := (muzzle - gun_sprite.to_global(muzzle_offset - Vector2(10, 0))).normalized()
+	if muzzle.distance_to(mouse) < 20.0 or dir.dot(barrel_dir) < 0:
+		dir = barrel_dir
 	# Add to the level, not the player, so bullets don't follow the player around.
-	get_parent().add_child(PlayerBullet.create(global_position, dir, self))
+	get_parent().add_child(PlayerBullet.create(muzzle, dir, self))
 	# Ground shots and the first shot in the air get full recoil; later air shots get the weaker one.
 	var recoil_modifier: float
 	if is_on_floor() or self._air_shots == 0:
