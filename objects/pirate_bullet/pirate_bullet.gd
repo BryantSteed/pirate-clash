@@ -23,6 +23,7 @@ static func create(from: Vector2, dir: Vector2, shooter_node: Node2D) -> PirateB
 
 
 func _ready() -> void:
+	$AnimatedSprite2D.play("shooting")
 	body_entered.connect(_on_body_entered)
 	get_tree().create_timer(lifetime).timeout.connect(queue_free)
 

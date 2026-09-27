@@ -1,9 +1,88 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwaujc8kotxcx"]
+[gd_scene load_steps=15 format=3 uid="uid://bwaujc8kotxcx"]
 
 [ext_resource type="Script" uid="uid://t8yqjnbhl5g" path="res://objects/pirate_bullet/pirate_bullet.gd" id="1_8xoiq"]
+[ext_resource type="Texture2D" uid="uid://barek40oyggse" path="res://art/Bullet Sprite Sheet.png" id="2_u7y4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54s3a"]
 size = Vector2(20, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko6vk"]
+atlas = ExtResource("2_u7y4u")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft6mj"]
+atlas = ExtResource("2_u7y4u")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pfd8"]
+atlas = ExtResource("2_u7y4u")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbf0i"]
+atlas = ExtResource("2_u7y4u")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr11e"]
+atlas = ExtResource("2_u7y4u")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de8gg"]
+atlas = ExtResource("2_u7y4u")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkp3s"]
+atlas = ExtResource("2_u7y4u")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfupm"]
+atlas = ExtResource("2_u7y4u")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bksyn"]
+atlas = ExtResource("2_u7y4u")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj2sm"]
+atlas = ExtResource("2_u7y4u")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i34o5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ko6vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft6mj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pfd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbf0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr11e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_de8gg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkp3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfupm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bksyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj2sm")
+}],
+"loop": true,
+"name": &"shooting",
+"speed": 5.0
+}]
 
 [node name="PirateBullet" type="Area2D"]
 script = ExtResource("1_8xoiq")
@@ -11,9 +90,6 @@ script = ExtResource("1_8xoiq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_54s3a")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -10.0
-offset_top = -5.0
-offset_right = 10.0
-offset_bottom = 5.0
-color = Color(1, 0, 0, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i34o5")
+animation = &"shooting"
