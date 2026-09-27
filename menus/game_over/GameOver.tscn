@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ckn36x0pay0q4"]
+
+[node name="GameOver" type="Node"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 230.0
+offset_top = 132.0
+offset_right = 804.0
+offset_bottom = 322.0
+text = "Time ran out! Your crew killed before before you could resuce the pieces of eight you scalawag!"

@@ -34,7 +34,12 @@ var _stun_timer := 0.0       # > 0 while frozen and invulnerable after a hit (th
 
 signal was_hit
 
-var crystal_count := 0
+signal crystal_count_changed(count: int)
+
+var crystal_count := 0:
+	set(value):
+		crystal_count = value
+		crystal_count_changed.emit(crystal_count)   # the HUD listens for this
 
 func add_crystal() -> void:
 	# Called by crystal when player enter it

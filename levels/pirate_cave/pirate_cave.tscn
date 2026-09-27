@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://brdjb6lpkcdhw"]
+[gd_scene load_steps=10 format=3 uid="uid://brdjb6lpkcdhw"]
 
 [ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://levels/pirate_cave/pirate_cave.gd" id="1_iqt3r"]
 [ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://player/player.tscn" id="2_5yxa8"]
@@ -7,6 +7,21 @@
 [ext_resource type="Script" uid="uid://cadm0glh6rk40" path="res://levels/level_bounds.gd" id="4_bounds"]
 [ext_resource type="PackedScene" uid="uid://m3ds7uea7dov" path="res://objects/crystal/crystal.tscn" id="4_hnc1q"]
 [ext_resource type="PackedScene" uid="uid://cd410nrue1gmg" path="res://objects/pirate/pirate.tscn" id="5_axm81"]
+[ext_resource type="PackedScene" uid="uid://b201mfuapymb5" path="res://menus/hud/hud.tscn" id="8_3pstc"]
+
+[sub_resource type="GDScript" id="GDScript_3pstc"]
+script/source = "extends Timer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="PirateCave" type="Node2D"]
 script = ExtResource("1_iqt3r")
@@ -43,3 +58,9 @@ position = Vector2(132.58319, 479.375)
 
 [node name="Crystal" parent="." instance=ExtResource("4_hnc1q")]
 position = Vector2(1024, 571)
+
+[node name="Hud" parent="." instance=ExtResource("8_3pstc")]
+
+[node name="HealthTimer" type="Timer" parent="." groups=["health_timer"]]
+wait_time = 60.0
+script = SubResource("GDScript_3pstc")
