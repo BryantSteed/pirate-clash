@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bjogtjs2a1x4g"
+path="res://.godot/imported/Uhh hurt sound.mp3-85ba9e4edadcd593da2654314affd1b8.mp3str"
+
+[deps]
+
+source_file="res://Music and SFX/Uhh hurt sound.mp3"
+dest_files=["res://.godot/imported/Uhh hurt sound.mp3-85ba9e4edadcd593da2654314affd1b8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
