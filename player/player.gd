@@ -17,11 +17,13 @@ extends CharacterBody2D
 @export var air_friction := 600.0        # coasting in the air (vs friction on the ground)
 @export var overspeed_decel := 900.0     # how fast momentum above `speed` (e.g. recoil) bleeds off
 @export var max_air_shots := 2          # shots allowed while airborne; ground shots are free
+@export var hit_stun_time := 0.5         # after a hit: frozen in place (no gravity/input) and can't be hit again
 
 var _coyote_timer := 0.0
 var _jump_buffer_timer := 0.0
 var _fire_cooldown_timer := 0.0
 var _air_shots := 0          # shots fired while airborne since the last landing
+var _stun_timer := 0.0       # > 0 while frozen and invulnerable after a hit (the "hit" animation shows)
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -35,21 +37,44 @@ func add_crystal() -> void:
 
 func hit() -> void:
 	# Called by a pirate bullet on contact. What a hit means (damage, death) is still TBD.
-	print("Player hit!")
+	if _stun_timer > 0:
+		return               # invulnerable while stunned
+	_stun_timer = hit_stun_time
+	velocity = Vector2.ZERO
+	# Stretch/squeeze "hit" so it plays through exactly once over the stun.
+	sprite.speed_scale = _animation_length("hit") / maxf(hit_stun_time, 0.01)
+	sprite.stop()            # restart from frame 0
+	sprite.play("hit")
 	was_hit.emit()
+
+
+func _animation_length(anim: StringName) -> float:
+	# Seconds the animation takes at speed_scale 1 (frames can have individual durations).
+	var frames := sprite.sprite_frames
+	var total := 0.0
+	for i in frames.get_frame_count(anim):
+		total += frames.get_frame_duration(anim, i)
+	return total / frames.get_animation_speed(anim)
 
 func _unhandled_input(event: InputEvent) -> void:
 	# _unhandled_input (not _input) so clicks on UI buttons don't also fire.
 	var shoot_action_pressed := event.is_action_pressed("shoot")
 	var fire_cooldown_finished := _fire_cooldown_timer <= 0
 	var air_shot_limit_not_exceeded := is_on_floor() or self._air_shots < self.max_air_shots
+	var not_stunned := _stun_timer <= 0
 
-	if shoot_action_pressed and fire_cooldown_finished and air_shot_limit_not_exceeded:
+	if shoot_action_pressed and fire_cooldown_finished and air_shot_limit_not_exceeded and not_stunned:
 		_shoot()
 
 
 func _physics_process(delta: float) -> void:
 	_fire_cooldown_timer -= delta
+	if _stun_timer > 0:
+		# Frozen: no gravity, no input, no movement until the stun runs out.
+		_stun_timer -= delta
+		velocity = Vector2.ZERO
+		_update_animation()
+		return
 	_apply_gravity(delta)
 	_handle_jump(delta)
 	_handle_horizontal(delta)
@@ -61,9 +86,13 @@ func _update_animation() -> void:
 	# Face the way we're moving; keep the last facing when standing still.
 	if velocity.x != 0:
 		sprite.flip_h = velocity.x < 0
+	if _stun_timer > 0:
+		return               # keep showing "hit" for the whole stun
+	sprite.speed_scale = 1.0 # undo the stun's stretch
 	# play() on the animation that's already playing is a no-op, so calling it every tick is fine.
-	# Once there's a "run" animation: sprite.play("run" if absf(velocity.x) > 10 else "idle")
-	if absf(velocity.x) > 10:
+	if not is_on_floor():
+		sprite.play("jump")
+	elif absf(velocity.x) > 10:
 		sprite.play("run")
 	else:
 		sprite.play("idle")
