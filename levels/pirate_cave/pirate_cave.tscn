@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://brdjb6lpkcdhw"]
+[gd_scene load_steps=8 format=3 uid="uid://brdjb6lpkcdhw"]
 
 [ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://levels/pirate_cave/pirate_cave.gd" id="1_iqt3r"]
 [ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://player/player.tscn" id="2_5yxa8"]
 [ext_resource type="Texture2D" uid="uid://dmp8tadh8d0cl" path="res://art/Crystal Cove Background.png" id="2_t40pf"]
 [ext_resource type="PackedScene" uid="uid://mvrfx4sp10s8" path="res://objects/platform/platform.tscn" id="3_3fj1w"]
 [ext_resource type="Script" uid="uid://cadm0glh6rk40" path="res://levels/level_bounds.gd" id="4_bounds"]
+[ext_resource type="PackedScene" uid="uid://m3ds7uea7dov" path="res://objects/crystal/crystal.tscn" id="4_hnc1q"]
 [ext_resource type="PackedScene" uid="uid://cd410nrue1gmg" path="res://objects/pirate/pirate.tscn" id="5_axm81"]
 
 [node name="PirateCave" type="Node2D"]
@@ -39,3 +40,6 @@ position = Vector2(1242.6372, 513.981)
 
 [node name="Pirate2" parent="." instance=ExtResource("5_axm81")]
 position = Vector2(132.58319, 479.375)
+
+[node name="Crystal" parent="." instance=ExtResource("4_hnc1q")]
+position = Vector2(1024, 571)

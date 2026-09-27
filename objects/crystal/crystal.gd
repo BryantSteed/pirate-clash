@@ -3,6 +3,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$AnimatedSprite2D.play("idle")
 	self.body_entered.connect(self._on_entered)
 
 
