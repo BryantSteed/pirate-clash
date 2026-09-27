@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c8ryd5ef881xm"]
+
+[node name="GameWon" type="Node"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 497.0
+offset_top = 234.0
+offset_right = 612.0
+offset_bottom = 257.0
+text = "You have Won!"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://brdjb6lpkcdhw"]
+[gd_scene load_steps=11 format=3 uid="uid://brdjb6lpkcdhw"]
 
 [ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://levels/pirate_cave/pirate_cave.gd" id="1_iqt3r"]
 [ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://player/player.tscn" id="2_5yxa8"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cd410nrue1gmg" path="res://objects/pirate/pirate.tscn" id="5_axm81"]
 [ext_resource type="PackedScene" uid="uid://b201mfuapymb5" path="res://menus/hud/hud.tscn" id="8_3pstc"]
 [ext_resource type="Script" uid="uid://bbrax723hdoqt" path="res://levels/pirate_cave/health_timer.gd" id="9_etrrw"]
+[ext_resource type="PackedScene" uid="uid://bgk2mghtc7m46" path="res://objects/portal/EndPortal.tscn" id="10_apnan"]
 
 [node name="PirateCave" type="Node2D"]
 script = ExtResource("1_iqt3r")
@@ -51,3 +52,6 @@ position = Vector2(1024, 571)
 [node name="HealthTimer" type="Timer" parent="." groups=["health_timer"]]
 wait_time = 60.0
 script = ExtResource("9_etrrw")
+
+[node name="EndPortal" parent="." instance=ExtResource("10_apnan")]
+position = Vector2(2306, 538)
