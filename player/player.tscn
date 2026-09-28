@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cj1po1odwlabg"]
+[gd_scene load_steps=59 format=3 uid="uid://cj1po1odwlabg"]
 
 [ext_resource type="Script" uid="uid://n3yoyl2b21uh" path="res://player/player.gd" id="1_xhfnw"]
 [ext_resource type="Script" uid="uid://p32tw0gdjr1e" path="res://player/player_camera.gd" id="2_camera"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bf21pipf86rec" path="res://art/Player jump-Sheet.png" id="4_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://chyv5eqkrhd70" path="res://art/Player Run Sheet.png" id="4_yw30f"]
 [ext_resource type="Texture2D" uid="uid://bi1558lnx68wu" path="res://art/Gun Shoot sheet.png" id="7_boad6"]
+[ext_resource type="AudioStream" uid="uid://djlx6ufj753c8" path="res://Music and SFX/Hurt Sound.mp3" id="8_rgyib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhfnw"]
 size = Vector2(24.5, 54)
@@ -395,3 +396,6 @@ position = Vector2(23, 13)
 position = Vector2(24, -15)
 sprite_frames = SubResource("SpriteFrames_8pxes")
 animation = &"shoot"
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_rgyib")

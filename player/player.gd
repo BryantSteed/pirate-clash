@@ -55,6 +55,7 @@ func hit() -> void:
 	sprite.speed_scale = _animation_length("hit") / maxf(hit_stun_time, 0.01)
 	sprite.stop()            # restart from frame 0
 	sprite.play("hit")
+	$HurtSound.play()
 	was_hit.emit()
 
 

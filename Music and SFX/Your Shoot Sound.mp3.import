@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3j51brtvelqr"
+path="res://.godot/imported/Your Shoot Sound.mp3-7777f917309f3b680fa3255ed1718b9c.mp3str"
+
+[deps]
+
+source_file="res://Music and SFX/Your Shoot Sound.mp3"
+dest_files=["res://.godot/imported/Your Shoot Sound.mp3-7777f917309f3b680fa3255ed1718b9c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
