@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://levels/pirate_cave/pirate_cave.gd" id="1_iqt3r"]
 [ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://player/player.tscn" id="2_5yxa8"]
+[ext_resource type="Texture2D" uid="uid://dmn8mphogdvvb" path="res://art/big deep background.png" id="2_vlfii"]
 [ext_resource type="PackedScene" uid="uid://mvrfx4sp10s8" path="res://objects/platform/platform.tscn" id="3_3fj1w"]
-[ext_resource type="Texture2D" uid="uid://djaqjfag53u2s" path="res://art/Crystal Backdrop 2 blurred.png" id="3_g62pi"]
 [ext_resource type="Script" uid="uid://cadm0glh6rk40" path="res://levels/level_bounds.gd" id="4_bounds"]
 [ext_resource type="PackedScene" uid="uid://m3ds7uea7dov" path="res://objects/crystal/crystal.tscn" id="4_hnc1q"]
 [ext_resource type="Texture2D" uid="uid://dpqq7ly4ennyf" path="res://art/Closer Walls background.png" id="4_vlfii"]
@@ -17,26 +17,25 @@
 script = ExtResource("1_iqt3r")
 
 [node name="BackGround" type="Node2D" parent="."]
-position = Vector2(0, 310)
 
 [node name="FarBackground" type="Parallax2D" parent="BackGround"]
 scroll_scale = Vector2(0.2, 1)
-repeat_size = Vector2(480, 0)
-repeat_times = 15
+repeat_size = Vector2(500, 0)
+repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="BackGround/FarBackground"]
+texture = ExtResource("2_vlfii")
 centered = false
 
 [node name="MidBackground" type="Parallax2D" parent="BackGround"]
-scroll_scale = Vector2(0.5, 1)
 repeat_size = Vector2(960, 0)
 repeat_times = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="BackGround/MidBackground"]
-texture = ExtResource("3_g62pi")
 centered = false
 
 [node name="CloseBackground" type="Parallax2D" parent="BackGround"]
+visible = false
 scroll_scale = Vector2(0.8, 1)
 repeat_size = Vector2(1440, 0)
 
@@ -45,9 +44,8 @@ texture = ExtResource("4_vlfii")
 centered = false
 
 [node name="LevelBounds" type="ReferenceRect" parent="." groups=["level_bounds"]]
-offset_top = -47.0
 offset_right = 4000.0
-offset_bottom = 601.0
+offset_bottom = 900.0
 mouse_filter = 2
 script = ExtResource("4_bounds")
 
@@ -55,17 +53,17 @@ script = ExtResource("4_bounds")
 position = Vector2(482, 409)
 
 [node name="Floor" parent="." instance=ExtResource("3_3fj1w")]
-position = Vector2(2000, 591)
+position = Vector2(2000, 900)
 size = Vector2(4000, 20)
 
 [node name="Pirate" parent="." instance=ExtResource("5_axm81")]
-position = Vector2(1242.6372, 513.981)
+position = Vector2(1284, 847)
 
 [node name="Pirate2" parent="." instance=ExtResource("5_axm81")]
-position = Vector2(68, 483)
+position = Vector2(64, 836)
 
 [node name="Crystal" parent="." instance=ExtResource("4_hnc1q")]
-position = Vector2(1024, 571)
+position = Vector2(1042, 840)
 
 [node name="Hud" parent="." instance=ExtResource("8_3pstc")]
 
@@ -74,7 +72,7 @@ wait_time = 300.0
 script = ExtResource("9_etrrw")
 
 [node name="EndPortal" parent="." instance=ExtResource("10_apnan")]
-position = Vector2(2306, 538)
+position = Vector2(2372, 846)
 
 [node name="BigCrystal" parent="." instance=ExtResource("11_hblv7")]
-position = Vector2(1457, 514)
+position = Vector2(1637, 822)
