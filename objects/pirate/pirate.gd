@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var hurt_time := 0.4             # seconds the "hurt" pose shows; no shooting meanwhile
 @export var muzzle_offset := Vector2(11, 3)  # barrel tip, in the gun sprite's local space (same gun art as the player)
 
-var _health := 0
+var _health := 3
 var _hurt_timer := 0.0                   # > 0 while showing "hurt"
 
 # Groups are joined on entering the tree, which happens for every node before any
