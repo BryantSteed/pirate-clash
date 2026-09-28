@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://m3ds7uea7dov"]
+[gd_scene load_steps=9 format=3 uid="uid://m3ds7uea7dov"]
 
 [ext_resource type="Script" uid="uid://wgqsd0am44cm" path="res://objects/crystal/crystal.gd" id="1_5541b"]
 [ext_resource type="Texture2D" uid="uid://juaeoh53kyem" path="res://art/Chris-Sheet.png" id="2_slu1t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujr1a"]
-size = Vector2(15, 16)
+size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h7pe3"]
 atlas = ExtResource("2_slu1t")
@@ -35,13 +35,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Crystal" type="Area2D" groups=["crystals"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slu1t"]
+size = Vector2(16, 16)
+
+[node name="Crystal" type="CharacterBody2D" groups=["crystals"]]
+collision_layer = 8
 script = ExtResource("1_5541b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_ujr1a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sa48m")
 animation = &"idle"
+
+[node name="PlayerSensor" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSensor"]
+shape = SubResource("RectangleShape2D_slu1t")
