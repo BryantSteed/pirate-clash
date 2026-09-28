@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://brdjb6lpkcdhw"]
+[gd_scene load_steps=13 format=3 uid="uid://brdjb6lpkcdhw"]
 
 [ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://levels/pirate_cave/pirate_cave.gd" id="1_iqt3r"]
 [ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://player/player.tscn" id="2_5yxa8"]
-[ext_resource type="Texture2D" uid="uid://b7q205dgtufb8" path="res://art/Cave Background Deep.png" id="2_hblv7"]
 [ext_resource type="PackedScene" uid="uid://mvrfx4sp10s8" path="res://objects/platform/platform.tscn" id="3_3fj1w"]
 [ext_resource type="Texture2D" uid="uid://djaqjfag53u2s" path="res://art/Crystal Backdrop 2 blurred.png" id="3_g62pi"]
 [ext_resource type="Script" uid="uid://cadm0glh6rk40" path="res://levels/level_bounds.gd" id="4_bounds"]
@@ -26,7 +25,6 @@ repeat_size = Vector2(480, 0)
 repeat_times = 15
 
 [node name="Sprite2D" type="Sprite2D" parent="BackGround/FarBackground"]
-texture = ExtResource("2_hblv7")
 centered = false
 
 [node name="MidBackground" type="Parallax2D" parent="BackGround"]
