@@ -72,6 +72,10 @@ func hit() -> void:
 	if _health <= 0:
 		return                           # already dying
 	_health -= 1
+	if _health > 0:
+		$HurtSound.play()
+	else:
+		$DeathSound.play()
 	_hurt_timer = hurt_time
 	sprite.play("hurt")
 	if _health <= 0:
