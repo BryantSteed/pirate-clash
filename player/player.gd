@@ -145,6 +145,7 @@ func _shoot() -> void:
 	_fire_cooldown_timer = fire_cooldown
 	gun_sprite.stop()        # restart from frame 0 even if the last shot's animation is still playing
 	gun_sprite.play("shoot")
+	$ShootSound.play()
 	# Spawn at the barrel tip. to_global() applies the whole chain (sprite position, pivot
 	# rotation, hand-swap mirror, player position), so this follows the gun however it's aimed.
 	var muzzle := gun_sprite.to_global(muzzle_offset)
@@ -204,6 +205,7 @@ func _handle_jump(delta: float) -> void:
 		_jump_buffer_timer -= delta
 
 	if _jump_buffer_timer > 0 and _coyote_timer > 0:
+		$JumpSound.play()
 		velocity.y = jump_velocity
 		_jump_buffer_timer = 0
 		_coyote_timer = 0
