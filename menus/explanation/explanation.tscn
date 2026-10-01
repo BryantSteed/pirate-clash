@@ -1,20 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://buyu66gudupft"]
+[gd_scene load_steps=3 format=3 uid="uid://buyu66gudupft"]
 
-[ext_resource type="Script" uid="uid://bvtc8eixqcj0n" path="res://menus/explanation/continue_button.gd" id="1_g5kft"]
+[ext_resource type="Texture2D" uid="uid://q4g1c5u874v3" path="res://art/Explanation Screen.png" id="1_10wnh"]
+[ext_resource type="Script" uid="uid://c86niij1uae83" path="res://menus/explanation/explanation.gd" id="1_g84gf"]
 
 [node name="Explanation" type="Node"]
+script = ExtResource("1_g84gf")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 50.0
-offset_top = 34.0
-offset_right = 406.0
-offset_bottom = 74.0
-text = "There's been a mutiny! You must collect the crystals or you will die!!!!"
-
-[node name="ContinueButton" type="Button" parent="."]
-offset_left = 36.0
-offset_top = 107.0
-offset_right = 423.0
-offset_bottom = 227.0
-text = "I Accept This Great Challenge!!"
-script = ExtResource("1_g5kft")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_10wnh")
+centered = false
