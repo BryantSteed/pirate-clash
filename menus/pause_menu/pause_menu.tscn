@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbrij4jxld8c6"]
+
+[ext_resource type="Texture2D" uid="uid://c0ryeyp7is31f" path="res://art/Full Pause Screen.png" id="1_5ndmu"]
+[ext_resource type="Script" uid="uid://bo82tjux6u807" path="res://menus/pause_menu/pause_menu.gd" id="1_jwttc"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 10
+script = ExtResource("1_jwttc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5ndmu")
+centered = false
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 222.0
+offset_top = 250.0
+offset_right = 422.0
+offset_bottom = 296.0
+
+[node name="OptionsButton" type="Button" parent="."]
+offset_left = 222.0
+offset_top = 198.0
+offset_right = 420.0
+offset_bottom = 242.0

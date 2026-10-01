@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://djdnw36i88oj3"]
+
+[ext_resource type="Texture2D" uid="uid://b7q205dgtufb8" path="res://art/Cave Background Deep.png" id="1_g8vb3"]
+[ext_resource type="Script" uid="uid://bps3t4svcdnc6" path="res://menus/options/options.gd" id="2_opts"]
+
+[node name="Options" type="CanvasLayer"]
+process_mode = 3
+layer = 11
+script = ExtResource("2_opts")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("1_g8vb3")
+centered = false
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 199.0
+offset_top = 184.0
+offset_right = 464.0
+offset_bottom = 200.0
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 280.0
+offset_top = 230.0
+offset_right = 380.0
+offset_bottom = 266.0
+text = "Back"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 274.0
+offset_top = 141.0
+offset_right = 499.0
+offset_bottom = 164.0
+text = "Volume Dial"
