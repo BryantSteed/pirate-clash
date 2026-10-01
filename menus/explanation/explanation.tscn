@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://buyu66gudupft"]
+[gd_scene load_steps=4 format=3 uid="uid://buyu66gudupft"]
 
 [ext_resource type="Texture2D" uid="uid://q4g1c5u874v3" path="res://art/Explanation Screen.png" id="1_10wnh"]
 [ext_resource type="Script" uid="uid://c86niij1uae83" path="res://menus/explanation/explanation.gd" id="1_g84gf"]
+[ext_resource type="AudioStream" uid="uid://ctlqpxty2gyj8" path="res://Music and SFX/Theme of Explanation.mp3" id="3_qp0pe"]
 
 [node name="Explanation" type="Node"]
 script = ExtResource("1_g84gf")
@@ -9,3 +10,7 @@ script = ExtResource("1_g84gf")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_10wnh")
 centered = false
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qp0pe")
+autoplay = true
