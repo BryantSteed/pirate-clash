@@ -5,6 +5,10 @@ extends CharacterBody2D
 @export var max_health := 3              # hits to kill (1 = one-shot, as before)
 @export var hurt_time := 0.4             # seconds the "hurt" pose shows; no shooting meanwhile
 @export var muzzle_offset := Vector2(11, 3)  # barrel tip, in the gun sprite's local space (same gun art as the player)
+@export var aggro_distance := 600.0
+@export var horizontal_ground_speed := 100
+@export var horizontal_air_speed := 100
+@export var jump_strength := -500
 
 var _health := 0
 var _hurt_timer := 0.0                   # > 0 while showing "hurt"
@@ -28,8 +32,26 @@ func _ready() -> void:
 	shoot_timer.timeout.connect(_shoot)
 	add_child(shoot_timer)
 
+func _in_aggro_range() -> bool:
+	return is_instance_valid(target) and global_position.distance_to(target.global_position) < aggro_distance
+
+func get_x_direction_to_target() -> float:
+	var deviation: Vector2 = target.global_position - self.global_position
+	if absf(deviation.x) < 8.0:
+		return 0.0                       # roughly lined up (e.g. player overhead): stand still instead of jittering
+	var direction: float = 1 if deviation.x > 0 else -1
+	return direction
 
 func _physics_process(delta: float) -> void:
+	# Only chase when the player is close, and not while hurt (including the death pose).
+	var ai_direction = get_x_direction_to_target() if _hurt_timer <= 0 and _in_aggro_range() else 0.0
+	if is_on_floor():
+		self.velocity.x = self.horizontal_ground_speed * ai_direction
+		if is_on_wall() and ai_direction != 0:
+			self.velocity.y = self.jump_strength
+	else:
+		self.velocity.x =  self.horizontal_air_speed * ai_direction
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	move_and_slide()
@@ -85,7 +107,7 @@ func hit() -> void:
 
 
 func _shoot() -> void:
-	if not is_instance_valid(target) or _hurt_timer > 0 or _health <= 0:
+	if not _in_aggro_range() or _hurt_timer > 0 or _health <= 0:
 		return
 	# TODO: line-of-sight check goes here
 	$ShootSound.play()
