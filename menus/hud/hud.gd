@@ -4,6 +4,7 @@ extends CanvasLayer
 
 @onready var crystal_label: Label = $CrystalLabel
 @onready var timerLabel: Label = $TimerLabel
+@onready var timeLossLabel: Label = $TimeLossLabel
 @onready var healthTimer: Timer = get_tree().get_first_node_in_group("health_timer")
 
 
@@ -13,6 +14,18 @@ func _ready() -> void:
 		return
 	player.crystal_count_changed.connect(_on_crystal_count_changed)
 	_on_crystal_count_changed(player.crystal_count)   # show the starting value
+	healthTimer.time_penalized.connect(self._on_time_penalized)
+	$PenaltyDisplayTimer.timeout.connect(self._on_penalty_display_timeout)
+
+var penaltyDisplayTimer: Timer = Timer.new()
+
+func _on_time_penalized(penalty: float) -> void:
+	self.timeLossLabel.text = str("-", penalty)
+	$PenaltyDisplayTimer.start(0.5)
+	
+func _on_penalty_display_timeout() -> void:
+	print('callback invoked')
+	self.timeLossLabel.text = ""
 	
 func _process(delta: float) -> void:
 	timerLabel.text = "Time: %d" % healthTimer.time_left

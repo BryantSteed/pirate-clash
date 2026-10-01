@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b201mfuapymb5"]
+[gd_scene load_steps=3 format=3 uid="uid://b201mfuapymb5"]
 
 [ext_resource type="Script" uid="uid://b4185mbmxgpri" path="res://menus/hud/hud.gd" id="1_hud"]
+[ext_resource type="FontFile" uid="uid://fxx5ooc68evs" path="res://art/Crystal.ttf" id="2_25yl0"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_hud")
@@ -8,10 +9,22 @@ script = ExtResource("1_hud")
 [node name="CrystalLabel" type="Label" parent="."]
 offset_right = 156.0
 offset_bottom = 27.0
-text = "Crystals: 0"
+theme_override_fonts/font = ExtResource("2_25yl0")
+text = "Crystals: "
 
 [node name="TimerLabel" type="Label" parent="."]
 offset_top = 25.0
 offset_right = 146.0
 offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("2_25yl0")
 text = "Time: "
+
+[node name="TimeLossLabel" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 41.0
+offset_right = 63.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_25yl0")
+
+[node name="PenaltyDisplayTimer" type="Timer" parent="."]
