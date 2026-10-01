@@ -16,6 +16,8 @@ func _ready() -> void:
 	_on_crystal_count_changed(player.crystal_count)   # show the starting value
 	healthTimer.time_penalized.connect(self._on_time_penalized)
 	$PenaltyDisplayTimer.timeout.connect(self._on_penalty_display_timeout)
+	healthTimer.time_bonus_added.connect(self._on_time_bonus_added)
+	$BonusDisplayTimer.timeout.connect(self._on_bonus_display_timeout)
 
 var penaltyDisplayTimer: Timer = Timer.new()
 
@@ -27,6 +29,13 @@ func _on_penalty_display_timeout() -> void:
 	print('callback invoked')
 	self.timeLossLabel.text = ""
 	
+func _on_time_bonus_added(bonus: float) -> void:
+	$TimeGainLabel.text = str("+", bonus)
+	$BonusDisplayTimer.start(0.5)        # restarting keeps it up if crystals are grabbed in quick succession
+
+func _on_bonus_display_timeout() -> void:
+	$TimeGainLabel.text = ""
+
 func _process(delta: float) -> void:
 	timerLabel.text = "Time: %d" % healthTimer.time_left
 

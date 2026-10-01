@@ -28,3 +28,14 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_25yl0")
 
 [node name="PenaltyDisplayTimer" type="Timer" parent="."]
+
+[node name="TimeGainLabel" type="Label" parent="."]
+offset_left = 29.0
+offset_top = 40.0
+offset_right = 90.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(0.3, 1, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_25yl0")
+
+[node name="BonusDisplayTimer" type="Timer" parent="."]
+one_shot = true

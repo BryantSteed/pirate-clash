@@ -34,6 +34,8 @@ var _stun_timer := 0.0       # > 0 while frozen and invulnerable after a hit (th
 
 signal was_hit
 
+signal crystal_collected
+
 signal crystal_count_changed(count: int)
 
 var crystal_count := 0:
@@ -45,6 +47,7 @@ func add_crystal() -> void:
 	# Called by crystal when player enter it
 	crystal_count += 1
 	$CollectCrystalSound.play()
+	crystal_collected.emit()     # the health timer listens for this to add time
 
 func hit() -> void:
 	# Called by a pirate bullet on contact. What a hit means (damage, death) is still TBD.
