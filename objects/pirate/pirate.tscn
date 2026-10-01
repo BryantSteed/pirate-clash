@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cd410nrue1gmg"]
+[gd_scene load_steps=37 format=3 uid="uid://cd410nrue1gmg"]
 
 [ext_resource type="Script" uid="uid://deb3bwshr1st5" path="res://objects/pirate/pirate.gd" id="1_33b3d"]
 [ext_resource type="Texture2D" uid="uid://dvkd3brs0dmgg" path="res://art/Enemy Pirate-Sheet.png" id="2_3l648"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bi1558lnx68wu" path="res://art/Gun Shoot sheet.png" id="4_lnwm1"]
 [ext_resource type="AudioStream" uid="uid://bmlxais1wbwbd" path="res://Music and SFX/Uhh hurt sound.mp3" id="5_62be0"]
 [ext_resource type="AudioStream" uid="uid://brio3nk8bwfew" path="res://Music and SFX/pirate die 1.mp3" id="6_cgcug"]
+[ext_resource type="AudioStream" uid="uid://bikws3nkhya6b" path="res://Music and SFX/Enemy Shoot Sound.mp3" id="7_2gqhq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2uity"]
 size = Vector2(50, 53)
@@ -238,3 +239,6 @@ stream = ExtResource("5_62be0")
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_cgcug")
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_2gqhq")

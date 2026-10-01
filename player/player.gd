@@ -44,6 +44,7 @@ var crystal_count := 0:
 func add_crystal() -> void:
 	# Called by crystal when player enter it
 	crystal_count += 1
+	$CollectCrystalSound.play()
 
 func hit() -> void:
 	# Called by a pirate bullet on contact. What a hit means (damage, death) is still TBD.

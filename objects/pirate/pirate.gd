@@ -88,6 +88,7 @@ func _shoot() -> void:
 	if not is_instance_valid(target) or _hurt_timer > 0 or _health <= 0:
 		return
 	# TODO: line-of-sight check goes here
+	$ShootSound.play()
 	gun_sprite.stop()        # restart from frame 0 in case the last shot's animation is still playing
 	gun_sprite.play("shoot")
 	# Spawn at the barrel tip. to_global() applies the whole chain (gun position, pivot

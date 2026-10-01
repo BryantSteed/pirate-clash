@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bsw77yonayhhb"]
+[gd_scene load_steps=14 format=3 uid="uid://bsw77yonayhhb"]
 
 [ext_resource type="Script" uid="uid://dk1u5775vfttt" path="res://objects/big_crystal/big_crystal.gd" id="1_hmpw0"]
 [ext_resource type="Texture2D" uid="uid://mx2rlig0gybg" path="res://art/Big boy Crystals normal-Sheet.png" id="1_nkonc"]
+[ext_resource type="AudioStream" uid="uid://dikrxh8a1yltw" path="res://Music and SFX/Crystal Break Sound.mp3" id="3_joilf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nkonc"]
 atlas = ExtResource("1_nkonc")
@@ -84,3 +85,6 @@ sprite_frames = SubResource("SpriteFrames_edtnj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.25)
 shape = SubResource("RectangleShape2D_nkonc")
+
+[node name="BreakSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_joilf")

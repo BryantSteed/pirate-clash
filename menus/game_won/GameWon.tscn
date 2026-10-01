@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c8ryd5ef881xm"]
+[gd_scene load_steps=2 format=3 uid="uid://c8ryd5ef881xm"]
+
+[ext_resource type="AudioStream" uid="uid://dkuw47gg6m0j4" path="res://Music and SFX/Door Enter Sound.mp3" id="1_gm7wb"]
 
 [node name="GameWon" type="Node"]
 
@@ -8,3 +10,7 @@ offset_top = 123.0
 offset_right = 292.0
 offset_bottom = 146.0
 text = "You have Won!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_gm7wb")
+autoplay = true

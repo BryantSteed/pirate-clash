@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://cj1po1odwlabg"]
+[gd_scene load_steps=62 format=3 uid="uid://cj1po1odwlabg"]
 
 [ext_resource type="Script" uid="uid://n3yoyl2b21uh" path="res://player/player.gd" id="1_xhfnw"]
 [ext_resource type="Script" uid="uid://p32tw0gdjr1e" path="res://player/player_camera.gd" id="2_camera"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://3j51brtvelqr" path="res://Music and SFX/Your Shoot Sound.mp3" id="8_hg6s5"]
 [ext_resource type="AudioStream" uid="uid://djlx6ufj753c8" path="res://Music and SFX/Hurt Sound.mp3" id="8_rgyib"]
 [ext_resource type="AudioStream" uid="uid://c5xmjcqp84gxr" path="res://Music and SFX/Jump sound.mp3" id="10_8t03j"]
+[ext_resource type="AudioStream" uid="uid://cfwlqq06qpc2p" path="res://Music and SFX/Crystal Collect.mp3" id="11_2ieo8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhfnw"]
 size = Vector2(24.5, 54)
@@ -407,3 +408,6 @@ stream = ExtResource("8_rgyib")
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_8t03j")
+
+[node name="CollectCrystalSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_2ieo8")

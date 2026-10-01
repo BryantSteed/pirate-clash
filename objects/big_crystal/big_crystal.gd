@@ -19,6 +19,7 @@ func _on_area_entered(node: Node2D) -> void:
 		return
 	self.is_broken = true
 	$AnimatedSprite2D.play("broken")
+	$BreakSound.play()
 	var parent_node := get_parent()
 	for i in range(num_crystal_split):
 		var small_crystal := CrystalScene.instantiate() as CharacterBody2D
