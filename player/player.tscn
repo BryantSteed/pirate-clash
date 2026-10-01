@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://chyv5eqkrhd70" path="res://art/Player Run Sheet.png" id="4_yw30f"]
 [ext_resource type="Texture2D" uid="uid://bi1558lnx68wu" path="res://art/Gun Shoot sheet.png" id="7_boad6"]
 [ext_resource type="AudioStream" uid="uid://3j51brtvelqr" path="res://Music and SFX/Your Shoot Sound.mp3" id="8_hg6s5"]
-[ext_resource type="AudioStream" path="res://Music and SFX/Hurt Sound.mp3" id="8_rgyib"]
-[ext_resource type="AudioStream" uid="uid://c5xmjcqp84gxr" path="res://Music and SFX/Jump sound.mp3" id="10_8t03j"]
+[ext_resource type="AudioStream" uid="uid://ramme1bbimiw" path="res://Music and SFX/You Hurt Sound.mp3" id="9_2ieo8"]
+[ext_resource type="AudioStream" uid="uid://dtjrvnkvr1iis" path="res://Music and SFX/Jump grunt.mp3" id="10_2ieo8"]
 [ext_resource type="AudioStream" uid="uid://cfwlqq06qpc2p" path="res://Music and SFX/Crystal Collect.mp3" id="11_2ieo8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhfnw"]
@@ -404,10 +404,11 @@ animation = &"shoot"
 stream = ExtResource("8_hg6s5")
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_rgyib")
+stream = ExtResource("9_2ieo8")
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_8t03j")
+stream = ExtResource("10_2ieo8")
+volume_db = 15.0
 
 [node name="CollectCrystalSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_2ieo8")
