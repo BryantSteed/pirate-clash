@@ -1,9 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://cd410nrue1gmg"]
+[gd_scene load_steps=46 format=3 uid="uid://cd410nrue1gmg"]
 
 [ext_resource type="Script" uid="uid://deb3bwshr1st5" path="res://objects/pirate/pirate.gd" id="1_33b3d"]
 [ext_resource type="Texture2D" uid="uid://dvkd3brs0dmgg" path="res://art/Enemy Pirate-Sheet.png" id="2_3l648"]
 [ext_resource type="Texture2D" uid="uid://bpmv4bra42ff1" path="res://art/enemy hurt.png" id="2_vcotp"]
 [ext_resource type="Texture2D" uid="uid://bi1558lnx68wu" path="res://art/Gun Shoot sheet.png" id="4_lnwm1"]
+[ext_resource type="Texture2D" uid="uid://c6u21bar1ixxs" path="res://art/Enemy Pirate Walk Sheet18+.png" id="4_t12ib"]
 [ext_resource type="AudioStream" uid="uid://bmlxais1wbwbd" path="res://Music and SFX/Uhh hurt sound.mp3" id="5_62be0"]
 [ext_resource type="AudioStream" uid="uid://brio3nk8bwfew" path="res://Music and SFX/pirate die 1.mp3" id="6_cgcug"]
 [ext_resource type="AudioStream" uid="uid://bikws3nkhya6b" path="res://Music and SFX/Enemy Shoot Sound.mp3" id="7_2gqhq"]
@@ -63,6 +64,42 @@ region = Rect2(640, 0, 64, 64)
 atlas = ExtResource("2_3l648")
 region = Rect2(704, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_akf1q"]
+atlas = ExtResource("4_t12ib")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62ukg"]
+atlas = ExtResource("4_t12ib")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta5cq"]
+atlas = ExtResource("4_t12ib")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvcwb"]
+atlas = ExtResource("4_t12ib")
+region = Rect2(1024, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p4oc"]
+atlas = ExtResource("4_t12ib")
+region = Rect2(1088, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbo0m"]
+atlas = ExtResource("4_t12ib")
+region = Rect2(1152, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kys8h"]
+atlas = ExtResource("4_t12ib")
+region = Rect2(1216, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi7vp"]
+atlas = ExtResource("4_t12ib")
+region = Rect2(1280, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c17f4"]
+atlas = ExtResource("4_t12ib")
+region = Rect2(1344, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_pl4h1"]
 animations = [{
 "frames": [{
@@ -113,6 +150,38 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akf1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62ukg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta5cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvcwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0p4oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbo0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kys8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi7vp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c17f4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 15.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vaj16"]
@@ -216,8 +285,8 @@ shape = SubResource("RectangleShape2D_2uity")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pl4h1")
-animation = &"idle"
-frame_progress = 0.51138693
+animation = &"walk"
+frame_progress = 0.30236673
 
 [node name="GunPivot" type="Node2D" parent="."]
 position = Vector2(19, 4)

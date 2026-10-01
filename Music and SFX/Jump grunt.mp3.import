@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtjrvnkvr1iis"
+path="res://.godot/imported/Jump grunt.mp3-3314e093ade41988f0f2c0d5ec0e3734.mp3str"
+
+[deps]
+
+source_file="res://Music and SFX/Jump grunt.mp3"
+dest_files=["res://.godot/imported/Jump grunt.mp3-3314e093ade41988f0f2c0d5ec0e3734.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

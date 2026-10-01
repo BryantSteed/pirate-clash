@@ -58,11 +58,18 @@ func _physics_process(delta: float) -> void:
 
 	if _hurt_timer > 0:
 		_hurt_timer -= delta
-		if _hurt_timer <= 0:
-			if _health <= 0:
-				queue_free()             # the hurt pose was its death; now it's gone
-			else:
-				sprite.play("idle")
+		if _hurt_timer <= 0 and _health <= 0:
+			queue_free()                 # the hurt pose was its death; now it's gone
+			return
+
+	_update_animation()
+
+
+func _update_animation() -> void:
+	if _hurt_timer > 0:
+		return                           # let the "hurt" pose play out
+	# play() is a no-op if that animation is already playing, so calling this every tick is fine.
+	sprite.play("walk" if absf(velocity.x) > 1.0 else "idle")
 
 
 func _process(_delta: float) -> void:

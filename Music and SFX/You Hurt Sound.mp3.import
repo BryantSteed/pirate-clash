@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ramme1bbimiw"
+path="res://.godot/imported/You Hurt Sound.mp3-610e714d4352a5683f7a3b47ab4c517e.mp3str"
+
+[deps]
+
+source_file="res://Music and SFX/You Hurt Sound.mp3"
+dest_files=["res://.godot/imported/You Hurt Sound.mp3-610e714d4352a5683f7a3b47ab4c517e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

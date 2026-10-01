@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dy8v3gylngytd"
+path="res://.godot/imported/B A Rank Song.mp3-dce9088ab6540d51cd3e761d63046e88.mp3str"
+
+[deps]
+
+source_file="res://Music and SFX/B A Rank Song.mp3"
+dest_files=["res://.godot/imported/B A Rank Song.mp3-dce9088ab6540d51cd3e761d63046e88.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
