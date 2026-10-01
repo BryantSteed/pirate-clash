@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cd410nrue1gmg"]
+[gd_scene load_steps=36 format=3 uid="uid://cd410nrue1gmg"]
 
 [ext_resource type="Script" uid="uid://deb3bwshr1st5" path="res://objects/pirate/pirate.gd" id="1_33b3d"]
 [ext_resource type="Texture2D" uid="uid://dvkd3brs0dmgg" path="res://art/Enemy Pirate-Sheet.png" id="2_3l648"]
@@ -63,10 +63,6 @@ region = Rect2(640, 0, 64, 64)
 atlas = ExtResource("2_3l648")
 region = Rect2(704, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_akf1q"]
-atlas = ExtResource("2_3l648")
-region = Rect2(768, 0, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_pl4h1"]
 animations = [{
 "frames": [{
@@ -113,9 +109,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4u0kj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_akf1q")
 }],
 "loop": true,
 "name": &"idle",
