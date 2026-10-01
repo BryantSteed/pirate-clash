@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://brdjb6lpkcdhw"]
+[gd_scene load_steps=14 format=3 uid="uid://brdjb6lpkcdhw"]
 
 [ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://levels/pirate_cave/pirate_cave.gd" id="1_iqt3r"]
 [ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://player/player.tscn" id="2_5yxa8"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bbrax723hdoqt" path="res://levels/pirate_cave/health_timer.gd" id="9_etrrw"]
 [ext_resource type="PackedScene" uid="uid://bgk2mghtc7m46" path="res://objects/portal/EndPortal.tscn" id="10_apnan"]
 [ext_resource type="PackedScene" uid="uid://bsw77yonayhhb" path="res://objects/big_crystal/BigCrystal.tscn" id="11_hblv7"]
+[ext_resource type="PackedScene" uid="uid://brcdx6m53mmlu" path="res://objects/platform_thick/platform_thick.tscn" id="13_ve74i"]
 [ext_resource type="AudioStream" uid="uid://b20g17so817l2" path="res://Music and SFX/song.mp3" id="13_vlfii"]
 
 [node name="PirateCave" type="Node2D"]
@@ -66,6 +67,5 @@ position = Vector2(1637, 822)
 stream = ExtResource("13_vlfii")
 autoplay = true
 
-[node name="Platform" parent="." instance=ExtResource("3_3fj1w")]
-position = Vector2(950, 790)
-rotation = 1.5707964
+[node name="PlatformThick" parent="." instance=ExtResource("13_ve74i")]
+position = Vector2(935, 826)

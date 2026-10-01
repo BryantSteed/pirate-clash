@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://mvrfx4sp10s8"]
 
-[ext_resource type="Script" path="res://objects/platform/platform.gd" id="1_platform"]
+[ext_resource type="Script" uid="uid://c2c2fux36vfcf" path="res://objects/platform/platform.gd" id="1_platform"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryoud"]
 resource_local_to_scene = true
