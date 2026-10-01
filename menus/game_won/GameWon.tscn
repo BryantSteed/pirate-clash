@@ -1,16 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8ryd5ef881xm"]
+[gd_scene load_steps=8 format=3 uid="uid://c8ryd5ef881xm"]
 
 [ext_resource type="AudioStream" uid="uid://dkuw47gg6m0j4" path="res://Music and SFX/Door Enter Sound.mp3" id="1_gm7wb"]
+[ext_resource type="Script" uid="uid://b55ibro6ef1t5" path="res://menus/game_won/game_won.gd" id="1_vkrop"]
+[ext_resource type="Texture2D" uid="uid://vsk1miqgxp0o" path="res://art/End Screen.png" id="2_6nnnx"]
+[ext_resource type="AudioStream" uid="uid://b3neefsnd1nr3" path="res://Music and SFX/S Rank Song.mp3" id="4_awnw1"]
+[ext_resource type="AudioStream" uid="uid://dy8v3gylngytd" path="res://Music and SFX/B A Rank Song.mp3" id="5_w4meu"]
+[ext_resource type="AudioStream" uid="uid://nlqo3atmnvcm" path="res://Music and SFX/F C Rank Song.mp3" id="6_8wg1d"]
+[ext_resource type="FontFile" uid="uid://fxx5ooc68evs" path="res://art/Crystal.ttf" id="7_awnw1"]
 
 [node name="GameWon" type="Node"]
+script = ExtResource("1_vkrop")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 177.0
-offset_top = 123.0
-offset_right = 292.0
-offset_bottom = 146.0
-text = "You have Won!"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="DoorEntrance" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_gm7wb")
-autoplay = true
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_6nnnx")
+centered = false
+
+[node name="Music" type="Node" parent="."]
+
+[node name="SRank" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("4_awnw1")
+
+[node name="ABRank" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("5_w4meu")
+
+[node name="CFRank" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("6_8wg1d")
+
+[node name="RankDisplay" type="Node2D" parent="."]
+
+[node name="RankLetter" type="Sprite2D" parent="RankDisplay"]
+centered = false
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 185.0
+offset_top = 334.0
+offset_right = 237.0
+offset_bottom = 357.0
+theme_override_fonts/font = ExtResource("7_awnw1")
+text = "Score: "
+
+[node name="TimeLeftLabel" type="Label" parent="."]
+offset_left = 183.0
+offset_top = 304.0
+offset_right = 264.0
+offset_bottom = 327.0
+theme_override_fonts/font = ExtResource("7_awnw1")
+text = "Time Left: "
+
+[node name="CrystalCountLabel" type="Label" parent="."]
+offset_left = 182.0
+offset_top = 271.0
+offset_right = 222.0
+offset_bottom = 294.0
+theme_override_fonts/font = ExtResource("7_awnw1")
+text = "Crystals Gathered: "
