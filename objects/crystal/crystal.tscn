@@ -50,6 +50,7 @@ sprite_frames = SubResource("SpriteFrames_sa48m")
 animation = &"idle"
 
 [node name="PlayerSensor" type="Area2D" parent="."]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSensor"]
 shape = SubResource("RectangleShape2D_slu1t")
