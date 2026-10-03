@@ -143,6 +143,17 @@ func _update_animation() -> void:
 func _ready() -> void:
 	# "shoot" doesn't loop, so it stops on its last frame; stop() rewinds to frame 0 (the resting gun).
 	gun_sprite.animation_finished.connect(gun_sprite.stop)
+	# One-way platforms let you land as soon as you're over their line, even with the line
+	# halfway up your body. While a platform is inside the body, ignore it, so you only land
+	# on platforms that are actually under your feet.
+	$PassThroughSensor.body_entered.connect(_pass_through_started)
+	$PassThroughSensor.body_exited.connect(_pass_through_ended)
+	
+func _pass_through_started(node: Node2D) -> void:
+	add_collision_exception_with(node)
+	
+func _pass_through_ended(node: Node2D) -> void:
+	remove_collision_exception_with(node)
 
 
 func _shoot() -> void:
