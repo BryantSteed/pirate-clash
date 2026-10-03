@@ -30,7 +30,7 @@ func _on_portal_entered() -> void:
 	queue_free()
 
 func _on_time_up() -> void:
-	get_tree().change_scene_to_file("res://menus/game_over/GameOver.tscn")
+	get_tree().change_scene_to_file("res://menus/game_won/GameWon.tscn")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
