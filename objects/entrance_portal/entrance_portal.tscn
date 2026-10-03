@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://ywovm3drjbpi"]
+
+[ext_resource type="Texture2D" uid="uid://bxbydqrmrain6" path="res://art/portal door-Sheet.png" id="1_yqyiu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xijim"]
+atlas = ExtResource("1_yqyiu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqtot"]
+atlas = ExtResource("1_yqyiu")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmp7g"]
+atlas = ExtResource("1_yqyiu")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwcsg"]
+atlas = ExtResource("1_yqyiu")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jfjy"]
+atlas = ExtResource("1_yqyiu")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n247"]
+atlas = ExtResource("1_yqyiu")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5j0f"]
+atlas = ExtResource("1_yqyiu")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2amn"]
+atlas = ExtResource("1_yqyiu")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqscm"]
+atlas = ExtResource("1_yqyiu")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yc15m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xijim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqtot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmp7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwcsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jfjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n247")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5j0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2amn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqscm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EntrancePortal" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_yc15m")
+autoplay = "default"

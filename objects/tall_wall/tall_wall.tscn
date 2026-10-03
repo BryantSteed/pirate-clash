@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy4mellmbbbxg"]
+
+[ext_resource type="Texture2D" uid="uid://bnr17b6100ium" path="res://art/Tall Wall.png" id="1_svlhi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76p8c"]
+size = Vector2(92, 15)
+
+[node name="TallWall" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -104.5)
+shape = SubResource("RectangleShape2D_76p8c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_svlhi")
