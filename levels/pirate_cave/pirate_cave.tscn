@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bgk2mghtc7m46" path="res://objects/portal/EndPortal.tscn" id="10_apnan"]
 [ext_resource type="Script" uid="uid://cypcngpwllvjp" path="res://levels/pirate_cave/music.gd" id="13_a5wx1"]
 [ext_resource type="AudioStream" uid="uid://b20g17so817l2" path="res://Music and SFX/song.mp3" id="13_vlfii"]
+[ext_resource type="PackedScene" uid="uid://cd410nrue1gmg" path="res://objects/pirate/pirate.tscn" id="14_a5wx1"]
 [ext_resource type="AudioStream" uid="uid://46lo6awoe8b7" path="res://Music and SFX/Main game theme 2.mp3" id="15_a5wx1"]
 [ext_resource type="PackedScene" uid="uid://bsw77yonayhhb" path="res://objects/big_crystal/BigCrystal.tscn" id="15_ijn3k"]
 [ext_resource type="PackedScene" uid="uid://brcdx6m53mmlu" path="res://objects/platform_thick/platform_thick.tscn" id="16_fany1"]
@@ -22,9 +23,13 @@
 [ext_resource type="PackedScene" uid="uid://dwuhi43w77qs" path="res://objects/long_platform/long_platform.tscn" id="19_8seph"]
 [ext_resource type="PackedScene" uid="uid://bnudokkrkqmih" path="res://objects/long_wall/long_wall.tscn" id="20_vtxiw"]
 [ext_resource type="Texture2D" uid="uid://bi3k82kvh0pu" path="res://art/Small Platform.png" id="22_6uy5h"]
+[ext_resource type="Texture2D" uid="uid://d3apub2cjpxwc" path="res://art/Long Platform.png" id="22_x0vca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klyrb"]
 size = Vector2(98, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_med6o"]
+size = Vector2(246, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppids"]
 size = Vector2(103, 1)
@@ -70,7 +75,7 @@ shape = SubResource("RectangleShape2D_klyrb")
 texture = ExtResource("5_rpv48")
 
 [node name="EndPortal" parent="." unique_id=1879429098 instance=ExtResource("10_apnan")]
-position = Vector2(3463, 128)
+position = Vector2(3497, 131)
 scale = Vector2(3, 3)
 
 [node name="PlatformThick" parent="." unique_id=1846786696 instance=ExtResource("16_fany1")]
@@ -82,6 +87,7 @@ scale = Vector2(0.8, 0.8)
 
 [node name="TallWall" parent="." unique_id=355736878 instance=ExtResource("7_fany1")]
 position = Vector2(1156, 764)
+rotation = -0.06981317
 
 [node name="PlatformThick2" parent="." unique_id=2126289766 instance=ExtResource("16_fany1")]
 position = Vector2(1321, 833)
@@ -91,8 +97,10 @@ position = Vector2(1553, 764)
 
 [node name="TallWall2" parent="." unique_id=849040415 instance=ExtResource("7_fany1")]
 position = Vector2(1599, 843)
+rotation = 0.12391838
 
 [node name="TallPlatform" parent="." unique_id=900308588 instance=ExtResource("8_atd8c")]
+z_index = 2
 position = Vector2(687, 838)
 
 [node name="Player" parent="." unique_id=1802354584 instance=ExtResource("2_5yxa8")]
@@ -138,11 +146,13 @@ scale = Vector2(1.2, 1.2)
 [node name="TallPlatform4" parent="." unique_id=263579547 instance=ExtResource("8_atd8c")]
 z_index = -20
 position = Vector2(1925, 546)
+rotation = -0.12217305
 scale = Vector2(1.2, 1.2)
 
 [node name="LongPlatform3" parent="." unique_id=1939861797 instance=ExtResource("19_8seph")]
-z_index = -1
+z_index = 3
 position = Vector2(1958, 810)
+rotation = 0.02443461
 scale = Vector2(1.2, 1.2)
 
 [node name="TallWall3" parent="." unique_id=1150588368 instance=ExtResource("7_fany1")]
@@ -151,21 +161,25 @@ position = Vector2(2040, 615)
 scale = Vector2(1.2, 0.6)
 
 [node name="LongPlatform" parent="." unique_id=1461678782 instance=ExtResource("19_8seph")]
-position = Vector2(3462.0002, 432.00006)
-scale = Vector2(1.5, 1.8)
+position = Vector2(3523, 429)
+rotation = -0.13962634
+scale = Vector2(1, 1.8)
 
 [node name="Beeg Crystal" parent="." unique_id=1536328597 instance=ExtResource("15_ijn3k")]
 z_index = 1
-position = Vector2(3538, 498)
+position = Vector2(3505.9998, 445.00012)
 rotation = 4.5413465
-scale = Vector2(1.8, 1.8)
+scale = Vector2(2.2, 2.2)
 num_crystal_split = 50
 
 [node name="LongPlatform2" parent="." unique_id=373167306 instance=ExtResource("19_8seph")]
 position = Vector2(3484, 767)
 
 [node name="LongWall" parent="." unique_id=1293066575 instance=ExtResource("20_vtxiw")]
-position = Vector2(3252, 767)
+z_index = -2
+position = Vector2(3331, 944.00024)
+rotation = -0.5602507
+scale = Vector2(1.3, 1)
 
 [node name="BigCrystal3" parent="." unique_id=706002976 instance=ExtResource("15_ijn3k")]
 z_index = -1
@@ -182,6 +196,36 @@ position = Vector2(-1.9073486e-06, 583.00006)
 rotation = 0.038397245
 scale = Vector2(2, 2)
 
+[node name="LongPlatform5" type="StaticBody2D" parent="." unique_id=701869909]
+z_index = 2
+position = Vector2(703, -100)
+rotation = -2.789036
+scale = Vector2(0.8, 2)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LongPlatform5" unique_id=1249319997]
+position = Vector2(0, -113.5)
+shape = SubResource("RectangleShape2D_med6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="LongPlatform5" unique_id=1989108931]
+texture = ExtResource("22_x0vca")
+
+[node name="TallWall5" parent="." unique_id=732944573 instance=ExtResource("7_fany1")]
+position = Vector2(348, -141.99998)
+rotation = -2.789036
+scale = Vector2(0.8, 2)
+
+[node name="TallWall4" parent="." unique_id=1132020535 instance=ExtResource("7_fany1")]
+position = Vector2(4.000003, 163)
+rotation = 1.6214108
+scale = Vector2(0.4, 2)
+
+[node name="BigCrystal2" parent="." unique_id=339051170 instance=ExtResource("15_ijn3k")]
+position = Vector2(92, 57.000004)
+rotation = 1.8709929
+scale = Vector2(2.8000002, 2.8000002)
+num_crystal_split = 50
+
 [node name="PlatformThick5" type="Node2D" parent="." unique_id=2096484652]
 position = Vector2(1392, 86.000015)
 rotation = -3.138102
@@ -196,3 +240,40 @@ shape = SubResource("RectangleShape2D_ppids")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlatformThick5" unique_id=1291039971]
 texture = ExtResource("22_6uy5h")
+
+[node name="PlatformThick6" parent="." unique_id=609064864 instance=ExtResource("16_fany1")]
+z_index = -20
+position = Vector2(133, 787)
+scale = Vector2(2, 2)
+
+[node name="Pirate" parent="." unique_id=1314552648 instance=ExtResource("14_a5wx1")]
+position = Vector2(1775, 201)
+
+[node name="LongPlatform6" type="StaticBody2D" parent="." unique_id=884936803]
+position = Vector2(2775, -8.9999695)
+rotation = -2.989749
+scale = Vector2(0.59999996, 1.2999998)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LongPlatform6" unique_id=1437837205]
+position = Vector2(0, -113.5)
+shape = SubResource("RectangleShape2D_med6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="LongPlatform6" unique_id=929567764]
+texture = ExtResource("22_x0vca")
+
+[node name="TallPlatform5" parent="." unique_id=1573589146 instance=ExtResource("8_atd8c")]
+z_index = -4
+position = Vector2(3177, 493.00003)
+scale = Vector2(1, 1.2)
+
+[node name="LongPlatform7" parent="." unique_id=1895747550 instance=ExtResource("19_8seph")]
+z_index = -3
+position = Vector2(3143, 761)
+rotation = 0.12391838
+scale = Vector2(0.9, 1.5)
+
+[node name="BigCrystal4" parent="." unique_id=827634185 instance=ExtResource("15_ijn3k")]
+z_index = -3
+position = Vector2(2750, 179.99998)
+rotation = -3.1730087
