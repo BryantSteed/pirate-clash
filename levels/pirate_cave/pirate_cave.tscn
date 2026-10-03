@@ -58,9 +58,11 @@ offset = Vector2(-400, 0)
 
 [node name="Pirate3" parent="." unique_id=779816441 instance=ExtResource("14_a5wx1")]
 position = Vector2(1870, 634)
+shoot_interval = 3.0
 
 [node name="Pirate4" parent="." unique_id=499760546 instance=ExtResource("14_a5wx1")]
 position = Vector2(1321, 865)
+shoot_interval = 5.0
 
 [node name="LongPlatform8" parent="." unique_id=1939861797 instance=ExtResource("19_8seph")]
 z_index = 5
@@ -109,6 +111,7 @@ shape = SubResource("RectangleShape2D_klyrb")
 texture = ExtResource("5_rpv48")
 
 [node name="EndPortal" parent="." unique_id=1879429098 instance=ExtResource("10_apnan")]
+z_index = -4
 position = Vector2(3497, 131)
 scale = Vector2(3, 3)
 
@@ -197,6 +200,7 @@ position = Vector2(2040, 615)
 scale = Vector2(1.2, 0.6)
 
 [node name="LongPlatform" parent="." unique_id=1461678782 instance=ExtResource("19_8seph")]
+z_index = -3
 position = Vector2(3523, 429)
 rotation = -0.13962634
 scale = Vector2(1, 1.8)
@@ -206,10 +210,17 @@ z_index = 1
 position = Vector2(3505.9998, 445.00012)
 rotation = 4.5413465
 scale = Vector2(2.2, 2.2)
-num_crystal_split = 35
+num_crystal_split = 27
 
 [node name="LongPlatform2" parent="." unique_id=373167306 instance=ExtResource("19_8seph")]
+z_index = -2
 position = Vector2(3484, 767)
+
+[node name="PlatformThick8" parent="." unique_id=228226234 instance=ExtResource("16_fany1")]
+z_index = -6
+position = Vector2(3503, 81.99999)
+rotation = -0.057595864
+scale = Vector2(2.2, 2.6)
 
 [node name="LongWall" parent="." unique_id=1293066575 instance=ExtResource("20_vtxiw")]
 z_index = 3
@@ -227,18 +238,17 @@ position = Vector2(-55.99997, 746)
 rotation = 0.54454273
 
 [node name="PlatformThick4" parent="." unique_id=1903491804 instance=ExtResource("16_fany1")]
-z_index = -3
-position = Vector2(-1.9073486e-06, 583.00006)
+z_index = -20
+position = Vector2(43, 610.00006)
 rotation = 0.038397245
 scale = Vector2(2, 2)
 
 [node name="LongPlatform5" type="StaticBody2D" parent="." unique_id=701869909]
 z_index = 2
-position = Vector2(661.00006, -96)
+position = Vector2(706.00006, -59.000008)
 rotation = -2.789036
 scale = Vector2(0.8, 2)
 metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LongPlatform5" unique_id=1249319997]
 position = Vector2(0, -113.5)
@@ -248,28 +258,25 @@ shape = SubResource("RectangleShape2D_med6o")
 texture = ExtResource("22_x0vca")
 
 [node name="TallWall5" parent="." unique_id=732944573 instance=ExtResource("7_fany1")]
-position = Vector2(348, -141.99998)
+position = Vector2(353, -155)
 rotation = -2.789036
 scale = Vector2(0.8, 2)
 
 [node name="TallWall4" parent="." unique_id=1132020535 instance=ExtResource("7_fany1")]
-position = Vector2(189.99998, 176)
+position = Vector2(71.999985, 188)
 rotation = 1.6214108
-scale = Vector2(0.4, 0.6)
-
-[node name="TallPlatform6" parent="." unique_id=312897822 instance=ExtResource("8_atd8c")]
-z_index = -3
-position = Vector2(250, 101)
-rotation = 0.50440013
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.4, 1.5)
 
 [node name="Pirate2" parent="." unique_id=1944914775 instance=ExtResource("14_a5wx1")]
 position = Vector2(3441.9998, 174.99998)
 rotation = 0.015707936
 scale = Vector2(1.7499998, 1.7499998)
-shoot_interval = 0.9
+shoot_interval = 3.0
 max_health = 10
 hurt_time = 0.13
+horizontal_ground_speed = 150
+horizontal_air_speed = 150
+jump_strength = -600
 
 [node name="BigCrystal5" parent="." unique_id=1822127094 instance=ExtResource("15_ijn3k")]
 z_index = -2
@@ -298,21 +305,15 @@ rotation = 0.4607669
 scale = Vector2(0.6, 0.6)
 num_crystal_split = 6
 
-[node name="TallWall6" parent="." unique_id=1252329174 instance=ExtResource("7_fany1")]
-position = Vector2(-11, 216.99998)
-rotation = 2.1851523
-scale = Vector2(0.3, 1.9)
-
 [node name="BigCrystal2" parent="." unique_id=339051170 instance=ExtResource("15_ijn3k")]
-position = Vector2(49, 10.999998)
+position = Vector2(62.000004, 44)
 rotation = 1.8709929
-scale = Vector2(2.4, 2.4)
-num_crystal_split = 40
+scale = Vector2(1.6, 1.6)
+num_crystal_split = 25
 spawn_offset = Vector2(70, 50)
-metadata/_edit_lock_ = true
 
 [node name="PlatformThick5" type="Node2D" parent="." unique_id=2096484652]
-position = Vector2(1392, 86.000015)
+position = Vector2(1357.0001, 89)
 rotation = -3.138102
 scale = Vector2(2, 2)
 metadata/_edit_group_ = true
@@ -389,3 +390,4 @@ texture = ExtResource("22_x0vca")
 position = Vector2(2703, 409)
 rotation = -0.06632251
 scale = Vector2(1.0999999, 1.2999998)
+shoot_interval = 4.0
