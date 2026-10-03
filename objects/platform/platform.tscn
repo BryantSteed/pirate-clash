@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://mvrfx4sp10s8"]
+[gd_scene load_steps=3 format=3 uid="uid://mvrfx4sp10s8"]
 
-[ext_resource type="Texture2D" uid="uid://bhm4ppc6vombo" path="res://art/ground.png" id="2_50sok"]
+[ext_resource type="Texture2D" uid="uid://cpdrte1qpeyap" path="res://art/fancyground.png" id="1_0u1hq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryoud"]
 resource_local_to_scene = true
-size = Vector2(4000, 64)
+size = Vector2(4000, 20)
 
 [node name="Platform" type="StaticBody2D"]
 
@@ -12,4 +12,7 @@ size = Vector2(4000, 64)
 shape = SubResource("RectangleShape2D_ryoud")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_50sok")
+texture_repeat = 2
+texture = ExtResource("1_0u1hq")
+region_enabled = true
+region_rect = Rect2(0, 0, 4000, 64)
