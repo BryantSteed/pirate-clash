@@ -1,18 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://brcdx6m53mmlu"]
+[gd_scene format=3 uid="uid://brcdx6m53mmlu"]
 
 [ext_resource type="Texture2D" uid="uid://bi3k82kvh0pu" path="res://art/Small Platform.png" id="1_endtw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppids"]
-size = Vector2(103, 15)
+size = Vector2(103, 1)
 
-[node name="PlatformThick" type="Node2D"]
+[node name="PlatformThick" type="Node2D" unique_id=1827665935]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=438930063]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-0.5, -16.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=997048692]
+position = Vector2(-0.5, -23.5)
 shape = SubResource("RectangleShape2D_ppids")
 one_way_collision = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1291039971]
 texture = ExtResource("1_endtw")

@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwuhi43w77qs"]
+[gd_scene format=3 uid="uid://dwuhi43w77qs"]
 
 [ext_resource type="Texture2D" uid="uid://d3apub2cjpxwc" path="res://art/Long Platform.png" id="1_u10nc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_med6o"]
-size = Vector2(246, 21)
+size = Vector2(246, 3)
 
-[node name="LongPlatform" type="StaticBody2D"]
+[node name="LongPlatform" type="StaticBody2D" unique_id=1939861797]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -104.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1249319997]
+position = Vector2(0, -113.5)
 shape = SubResource("RectangleShape2D_med6o")
 one_way_collision = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1989108931]
 texture = ExtResource("1_u10nc")

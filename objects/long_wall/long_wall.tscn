@@ -1,16 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnudokkrkqmih"]
+[gd_scene format=3 uid="uid://bnudokkrkqmih"]
 
 [ext_resource type="Texture2D" uid="uid://dwc55vd83pu4b" path="res://art/long Wall.png" id="1_l04va"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3sg2s"]
-size = Vector2(238, 20)
+size = Vector2(238, 244)
 
-[node name="LongWall" type="StaticBody2D"]
+[node name="LongWall" type="StaticBody2D" unique_id=1293066575]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -105)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=496948249]
+position = Vector2(-1, 7)
 shape = SubResource("RectangleShape2D_3sg2s")
-one_way_collision = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=218322956]
 texture = ExtResource("1_l04va")

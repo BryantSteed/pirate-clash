@@ -6,16 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://mvrfx4sp10s8" path="res://objects/platform/platform.tscn" id="3_3fj1w"]
 [ext_resource type="Texture2D" uid="uid://rtucb0lkrgh1" path="res://art/Crystal layer.png" id="3_vlfii"]
 [ext_resource type="Script" uid="uid://cadm0glh6rk40" path="res://levels/level_bounds.gd" id="4_bounds"]
+[ext_resource type="PackedScene" uid="uid://dy4mellmbbbxg" path="res://objects/tall_wall/tall_wall.tscn" id="7_fany1"]
 [ext_resource type="PackedScene" uid="uid://b201mfuapymb5" path="res://menus/hud/hud.tscn" id="8_3pstc"]
+[ext_resource type="PackedScene" uid="uid://bml3gsbig37n8" path="res://objects/tall_platform/tall_platform.tscn" id="8_atd8c"]
 [ext_resource type="Script" uid="uid://bbrax723hdoqt" path="res://levels/pirate_cave/health_timer.gd" id="9_etrrw"]
 [ext_resource type="PackedScene" uid="uid://bgk2mghtc7m46" path="res://objects/portal/EndPortal.tscn" id="10_apnan"]
 [ext_resource type="Script" uid="uid://cypcngpwllvjp" path="res://levels/pirate_cave/music.gd" id="13_a5wx1"]
 [ext_resource type="AudioStream" uid="uid://b20g17so817l2" path="res://Music and SFX/song.mp3" id="13_vlfii"]
-[ext_resource type="PackedScene" uid="uid://cd410nrue1gmg" path="res://objects/pirate/pirate.tscn" id="14_a5wx1"]
 [ext_resource type="AudioStream" uid="uid://46lo6awoe8b7" path="res://Music and SFX/Main game theme 2.mp3" id="15_a5wx1"]
 [ext_resource type="PackedScene" uid="uid://bsw77yonayhhb" path="res://objects/big_crystal/BigCrystal.tscn" id="15_ijn3k"]
 [ext_resource type="PackedScene" uid="uid://brcdx6m53mmlu" path="res://objects/platform_thick/platform_thick.tscn" id="16_fany1"]
 [ext_resource type="Script" uid="uid://b0xfdybt3kgtw" path="res://addons/almios_crt_lite/crt_lite.gd" id="16_ijn3k"]
+[ext_resource type="PackedScene" uid="uid://ywovm3drjbpi" path="res://objects/entrance_portal/entrance_portal.tscn" id="17_8seph"]
+[ext_resource type="PackedScene" uid="uid://dwuhi43w77qs" path="res://objects/long_platform/long_platform.tscn" id="19_8seph"]
 
 [node name="PirateCave" type="Node2D" unique_id=1720775316]
 script = ExtResource("1_iqt3r")
@@ -44,8 +47,33 @@ offset_bottom = 900.0
 mouse_filter = 2
 script = ExtResource("4_bounds")
 
+[node name="EndPortal" parent="." unique_id=1879429098 instance=ExtResource("10_apnan")]
+position = Vector2(231, 230)
+
+[node name="PlatformThick" parent="." unique_id=1846786696 instance=ExtResource("16_fany1")]
+position = Vector2(467, 827)
+
+[node name="BigCrystal" parent="." unique_id=519089028 instance=ExtResource("15_ijn3k")]
+position = Vector2(684, 677)
+scale = Vector2(0.8, 0.8)
+
+[node name="TallWall" parent="." unique_id=355736878 instance=ExtResource("7_fany1")]
+position = Vector2(1156, 764)
+
+[node name="PlatformThick2" parent="." unique_id=2126289766 instance=ExtResource("16_fany1")]
+position = Vector2(1321, 833)
+
+[node name="TallPlatform2" parent="." unique_id=173439953 instance=ExtResource("8_atd8c")]
+position = Vector2(1551, 867)
+
+[node name="TallWall2" parent="." unique_id=849040415 instance=ExtResource("7_fany1")]
+position = Vector2(1623, 943)
+
+[node name="TallPlatform" parent="." unique_id=900308588 instance=ExtResource("8_atd8c")]
+position = Vector2(687, 838)
+
 [node name="Player" parent="." unique_id=1802354584 instance=ExtResource("2_5yxa8")]
-position = Vector2(482, 409)
+position = Vector2(130, 861)
 
 [node name="Floor" parent="." unique_id=1115272502 instance=ExtResource("3_3fj1w")]
 position = Vector2(2000, 900)
@@ -61,23 +89,35 @@ script = ExtResource("13_a5wx1")
 
 [node name="option1" type="AudioStreamPlayer" parent="Music" unique_id=1115540943]
 stream = ExtResource("13_vlfii")
+parameters/looping = true
 
 [node name="option2" type="AudioStreamPlayer" parent="Music" unique_id=750082783]
 stream = ExtResource("15_a5wx1")
+parameters/looping = true
 
 [node name="CRTLite" type="CanvasLayer" parent="." unique_id=1673745833]
 layer = 100
 script = ExtResource("16_ijn3k")
 metadata/_custom_type_script = "uid://b0xfdybt3kgtw"
 
-[node name="EndPortal" parent="." unique_id=105473729 instance=ExtResource("10_apnan")]
-position = Vector2(106, 860)
+[node name="EntrancePortal" parent="." unique_id=791633691 instance=ExtResource("17_8seph")]
+position = Vector2(129, 858)
 
-[node name="Pirate" parent="." unique_id=704724085 instance=ExtResource("14_a5wx1")]
-position = Vector2(1215, 858)
+[node name="PlatformThick3" parent="." unique_id=1827665935 instance=ExtResource("16_fany1")]
+position = Vector2(1740, 817)
+scale = Vector2(1.2, 1.2)
 
-[node name="BigCrystal" parent="." unique_id=978777140 instance=ExtResource("15_ijn3k")]
-position = Vector2(1524, 826)
+[node name="TallPlatform3" parent="." unique_id=933391543 instance=ExtResource("8_atd8c")]
+position = Vector2(2110, 751)
+scale = Vector2(1.2, 1.2)
 
-[node name="PlatformThick" parent="." unique_id=1833812902 instance=ExtResource("16_fany1")]
-position = Vector2(932, 831)
+[node name="TallWall3" parent="." unique_id=1873017138 instance=ExtResource("7_fany1")]
+position = Vector2(3654, -1.9999847)
+scale = Vector2(1.2, 7)
+
+[node name="LongPlatform" parent="." unique_id=1939861797 instance=ExtResource("19_8seph")]
+position = Vector2(244, 378)
+
+[node name="TallWall4" parent="." unique_id=978606226 instance=ExtResource("7_fany1")]
+position = Vector2(-41, -4)
+scale = Vector2(1, 7)
