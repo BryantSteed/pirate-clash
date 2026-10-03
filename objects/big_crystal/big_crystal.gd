@@ -3,6 +3,7 @@ extends Area2D
 const CrystalScene := preload("res://objects/crystal/crystal.tscn")
 
 @export var num_crystal_split: int = 5
+@export var spawn_offset: Vector2 = Vector2(0, 0)
 
 var is_broken: bool = false
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +22,7 @@ func _on_area_entered(node: Node2D) -> void:
 	var parent_node := get_parent()
 	for i in range(num_crystal_split):
 		var small_crystal := CrystalScene.instantiate() as CharacterBody2D
-		small_crystal.position = self.position
+		small_crystal.position = self.position + self.spawn_offset
 		# Launch each one in a random upward direction so they spray out instead of piling up.
 		small_crystal.velocity = Crystal.get_burst_velocity()
 		# Deferred: we're inside a physics callback, and adding bodies/areas mid-step errors.

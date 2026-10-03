@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsw77yonayhhb"]
+[gd_scene format=3 uid="uid://bsw77yonayhhb"]
 
 [ext_resource type="Script" uid="uid://dk1u5775vfttt" path="res://objects/big_crystal/big_crystal.gd" id="1_hmpw0"]
 [ext_resource type="Texture2D" uid="uid://mx2rlig0gybg" path="res://art/Big boy Crystals normal-Sheet.png" id="1_nkonc"]
@@ -42,7 +42,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nkonc")
 }],
-"loop": true,
+"loop": 1,
 "name": &"broken",
 "speed": 5.0
 }, {
@@ -68,7 +68,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5v60o")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 2.0
 }]
@@ -76,15 +76,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkonc"]
 size = Vector2(107, 125.5)
 
-[node name="BigCrystal" type="Area2D"]
+[node name="BigCrystal" type="Area2D" unique_id=1822127094]
 script = ExtResource("1_hmpw0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1515441147]
 sprite_frames = SubResource("SpriteFrames_edtnj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1749331165]
 position = Vector2(0, 1.25)
 shape = SubResource("RectangleShape2D_nkonc")
 
-[node name="BreakSound" type="AudioStreamPlayer" parent="."]
+[node name="BreakSound" type="AudioStreamPlayer" parent="." unique_id=113130794]
 stream = ExtResource("3_joilf")
