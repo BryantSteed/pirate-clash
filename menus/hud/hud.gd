@@ -26,7 +26,6 @@ func _on_time_penalized(penalty: float) -> void:
 	$PenaltyDisplayTimer.start(0.5)
 	
 func _on_penalty_display_timeout() -> void:
-	print('callback invoked')
 	self.timeLossLabel.text = ""
 	
 func _on_time_bonus_added(bonus: float) -> void:

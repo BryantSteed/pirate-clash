@@ -20,6 +20,7 @@ var _hurt_timer := 0.0                   # > 0 while showing "hurt"
 @onready var gun_pivot: Node2D = $GunPivot
 @onready var _hand_position: Vector2 = gun_pivot.position   # right-hand anchor, as placed in the editor
 @onready var gun_sprite: AnimatedSprite2D = $GunPivot/AnimatedSprite2D   # rename to GunSprite in the scene, then update this path
+@onready var cloudScene: PackedScene = preload("res://objects/pirate_cloud/pirate_cloud.tscn")
 
 func _ready() -> void:
 	_health = max_health
@@ -59,6 +60,9 @@ func _physics_process(delta: float) -> void:
 	if _hurt_timer > 0:
 		_hurt_timer -= delta
 		if _hurt_timer <= 0 and _health <= 0:
+			var cloudSceneInstance := cloudScene.instantiate()
+			cloudSceneInstance.global_position = self.global_position
+			get_parent().add_child(cloudSceneInstance)
 			queue_free()                 # the hurt pose was its death; now it's gone
 			return
 
