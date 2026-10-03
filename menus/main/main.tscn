@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://ccu7nj3wtu2sm"]
 
-[ext_resource type="Script" uid="uid://bepglbnf4k3o1" path="res://menus/main/start_button.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://daxoce0qeb7pi" path="res://menus/main/main.gd" id="1_pcs4h"]
 [ext_resource type="Texture2D" uid="uid://dx3ln17lcqn11" path="res://art/Start Screen Complete.png" id="2_rhomd"]
 [ext_resource type="AudioStream" uid="uid://ctlqpxty2gyj8" path="res://Music and SFX/Theme of Explanation.mp3" id="3_ajdwu"]
 
 [node name="main" type="Node" unique_id=1472677565]
+script = ExtResource("1_pcs4h")
 
 [node name="StartButton" type="Button" parent="." unique_id=826289980]
 offset_left = 196.0
 offset_top = 232.0
 offset_right = 446.0
 offset_bottom = 283.0
-script = ExtResource("1_ig7tw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1229621552]
 z_index = -1
@@ -20,5 +20,4 @@ centered = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=941853470]
 stream = ExtResource("3_ajdwu")
-autoplay = true
 parameters/looping = true
