@@ -21,6 +21,7 @@ var _hurt_timer := 0.0                   # > 0 while showing "hurt"
 @onready var _hand_position: Vector2 = gun_pivot.position   # right-hand anchor, as placed in the editor
 @onready var gun_sprite: AnimatedSprite2D = $GunPivot/AnimatedSprite2D   # rename to GunSprite in the scene, then update this path
 @onready var cloudScene: PackedScene = preload("res://objects/pirate_cloud/pirate_cloud.tscn")
+@onready var crystalScene: PackedScene = preload("res://objects/crystal/crystal.tscn")
 
 func _ready() -> void:
 	_health = max_health
@@ -63,6 +64,8 @@ func _physics_process(delta: float) -> void:
 			var cloudSceneInstance := cloudScene.instantiate()
 			cloudSceneInstance.global_position = self.global_position
 			get_parent().add_child(cloudSceneInstance)
+			for i in range(3):
+				_spawn_crystal()
 			queue_free()                 # the hurt pose was its death; now it's gone
 			return
 
@@ -99,6 +102,11 @@ func _face_target() -> void:
 	var to_target := target_pos - gun_pivot.global_position
 	gun_pivot.rotation = to_target.angle() + (PI if target_left else 0.0)
 
+func _spawn_crystal() -> void:
+	var newCrystal := crystalScene.instantiate()
+	newCrystal.global_position = self.global_position
+	newCrystal.velocity = Crystal.get_burst_velocity()
+	get_parent().add_child(newCrystal)
 
 func hit() -> void:
 	# Called by a player bullet on contact.
@@ -107,6 +115,7 @@ func hit() -> void:
 	_health -= 1
 	if _health > 0:
 		$HurtSound.play()
+		_spawn_crystal()
 	else:
 		$DeathSound.play()
 	_hurt_timer = hurt_time
