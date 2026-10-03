@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://brdjb6lpkcdhw"]
+[gd_scene load_steps=14 format=3 uid="uid://brdjb6lpkcdhw"]
 
 [ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://levels/pirate_cave/pirate_cave.gd" id="1_iqt3r"]
 [ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://player/player.tscn" id="2_5yxa8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cadm0glh6rk40" path="res://levels/level_bounds.gd" id="4_bounds"]
 [ext_resource type="PackedScene" uid="uid://b201mfuapymb5" path="res://menus/hud/hud.tscn" id="8_3pstc"]
 [ext_resource type="Script" uid="uid://bbrax723hdoqt" path="res://levels/pirate_cave/health_timer.gd" id="9_etrrw"]
+[ext_resource type="PackedScene" uid="uid://bgk2mghtc7m46" path="res://objects/portal/EndPortal.tscn" id="10_apnan"]
 [ext_resource type="Script" uid="uid://cypcngpwllvjp" path="res://levels/pirate_cave/music.gd" id="13_a5wx1"]
 [ext_resource type="AudioStream" uid="uid://b20g17so817l2" path="res://Music and SFX/song.mp3" id="13_vlfii"]
 [ext_resource type="AudioStream" uid="uid://46lo6awoe8b7" path="res://Music and SFX/Main game theme 2.mp3" id="15_a5wx1"]
@@ -65,3 +66,5 @@ stream = ExtResource("15_a5wx1")
 layer = 100
 script = ExtResource("16_ijn3k")
 metadata/_custom_type_script = "uid://b0xfdybt3kgtw"
+
+[node name="EndPortal" parent="." instance=ExtResource("10_apnan")]
