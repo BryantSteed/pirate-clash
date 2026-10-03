@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://brdjb6lpkcdhw"]
+[gd_scene load_steps=13 format=3 uid="uid://brdjb6lpkcdhw"]
 
 [ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://levels/pirate_cave/pirate_cave.gd" id="1_iqt3r"]
 [ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://player/player.tscn" id="2_5yxa8"]
@@ -6,13 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://mvrfx4sp10s8" path="res://objects/platform/platform.tscn" id="3_3fj1w"]
 [ext_resource type="Texture2D" uid="uid://rtucb0lkrgh1" path="res://art/Crystal layer.png" id="3_vlfii"]
 [ext_resource type="Script" uid="uid://cadm0glh6rk40" path="res://levels/level_bounds.gd" id="4_bounds"]
-[ext_resource type="PackedScene" uid="uid://cd410nrue1gmg" path="res://objects/pirate/pirate.tscn" id="5_axm81"]
 [ext_resource type="PackedScene" uid="uid://b201mfuapymb5" path="res://menus/hud/hud.tscn" id="8_3pstc"]
 [ext_resource type="Script" uid="uid://bbrax723hdoqt" path="res://levels/pirate_cave/health_timer.gd" id="9_etrrw"]
-[ext_resource type="PackedScene" uid="uid://bgk2mghtc7m46" path="res://objects/portal/EndPortal.tscn" id="10_apnan"]
-[ext_resource type="PackedScene" uid="uid://bsw77yonayhhb" path="res://objects/big_crystal/BigCrystal.tscn" id="11_hblv7"]
 [ext_resource type="Script" uid="uid://cypcngpwllvjp" path="res://levels/pirate_cave/music.gd" id="13_a5wx1"]
-[ext_resource type="PackedScene" uid="uid://brcdx6m53mmlu" path="res://objects/platform_thick/platform_thick.tscn" id="13_ve74i"]
 [ext_resource type="AudioStream" uid="uid://b20g17so817l2" path="res://Music and SFX/song.mp3" id="13_vlfii"]
 [ext_resource type="AudioStream" uid="uid://46lo6awoe8b7" path="res://Music and SFX/Main game theme 2.mp3" id="15_a5wx1"]
 [ext_resource type="Script" uid="uid://b0xfdybt3kgtw" path="res://addons/almios_crt_lite/crt_lite.gd" id="16_ijn3k"]
@@ -50,23 +46,11 @@ position = Vector2(482, 409)
 [node name="Floor" parent="." instance=ExtResource("3_3fj1w")]
 position = Vector2(2000, 900)
 
-[node name="Pirate" parent="." instance=ExtResource("5_axm81")]
-position = Vector2(1284, 847)
-
 [node name="Hud" parent="." instance=ExtResource("8_3pstc")]
 
 [node name="HealthTimer" type="Timer" parent="." groups=["health_timer"]]
 wait_time = 300.0
 script = ExtResource("9_etrrw")
-
-[node name="EndPortal" parent="." instance=ExtResource("10_apnan")]
-position = Vector2(2372, 846)
-
-[node name="BigCrystal" parent="." instance=ExtResource("11_hblv7")]
-position = Vector2(1637, 822)
-
-[node name="PlatformThick" parent="." instance=ExtResource("13_ve74i")]
-position = Vector2(935, 826)
 
 [node name="Music" type="Node" parent="."]
 script = ExtResource("13_a5wx1")
