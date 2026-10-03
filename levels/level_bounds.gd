@@ -7,7 +7,7 @@ extends ReferenceRect
 
 @export var wall_left := true
 @export var wall_right := true
-@export var wall_top := false      # off by default: jumping above the top edge is harmless
+@export var wall_top := true      # off by default: jumping above the top edge is harmless
 @export var wall_bottom := true    # turn off once pits have a death zone instead
 
 

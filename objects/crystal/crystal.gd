@@ -2,9 +2,12 @@ extends CharacterBody2D
 
 class_name Crystal
 
-@export var horizontalSpeed := 300
+@export var baseHorizontalSpeed := 300
 @export var horizonalAirSpeed := 100
 @export var jumpStrength := -500
+@export var horizontalRandomRange := 75
+
+var horizontalSpeed: float
 
 static var burst_speed_x := 150.0
 static var burst_speed_y := Vector2(200, 350)
@@ -14,6 +17,7 @@ static var burst_speed_y := Vector2(200, 350)
 func _ready() -> void:
 	$AnimatedSprite2D.play("idle")
 	$PlayerSensor.body_entered.connect(self._on_entered)
+	horizontalSpeed=randf_range(baseHorizontalSpeed-horizontalRandomRange, baseHorizontalSpeed+horizontalRandomRange)
 
 
 func _physics_process(delta: float) -> void:
