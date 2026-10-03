@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://brdjb6lpkcdhw"]
+[gd_scene format=3 uid="uid://brdjb6lpkcdhw"]
 
 [ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://levels/pirate_cave/pirate_cave.gd" id="1_iqt3r"]
 [ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://player/player.tscn" id="2_5yxa8"]
@@ -11,60 +11,73 @@
 [ext_resource type="PackedScene" uid="uid://bgk2mghtc7m46" path="res://objects/portal/EndPortal.tscn" id="10_apnan"]
 [ext_resource type="Script" uid="uid://cypcngpwllvjp" path="res://levels/pirate_cave/music.gd" id="13_a5wx1"]
 [ext_resource type="AudioStream" uid="uid://b20g17so817l2" path="res://Music and SFX/song.mp3" id="13_vlfii"]
+[ext_resource type="PackedScene" uid="uid://cd410nrue1gmg" path="res://objects/pirate/pirate.tscn" id="14_a5wx1"]
 [ext_resource type="AudioStream" uid="uid://46lo6awoe8b7" path="res://Music and SFX/Main game theme 2.mp3" id="15_a5wx1"]
+[ext_resource type="PackedScene" uid="uid://bsw77yonayhhb" path="res://objects/big_crystal/BigCrystal.tscn" id="15_ijn3k"]
+[ext_resource type="PackedScene" uid="uid://brcdx6m53mmlu" path="res://objects/platform_thick/platform_thick.tscn" id="16_fany1"]
 [ext_resource type="Script" uid="uid://b0xfdybt3kgtw" path="res://addons/almios_crt_lite/crt_lite.gd" id="16_ijn3k"]
 
-[node name="PirateCave" type="Node2D"]
+[node name="PirateCave" type="Node2D" unique_id=1720775316]
 script = ExtResource("1_iqt3r")
 
-[node name="BackGround" type="Node2D" parent="."]
+[node name="BackGround" type="Node2D" parent="." unique_id=561523159]
 
-[node name="FarBackground" type="Parallax2D" parent="BackGround"]
+[node name="FarBackground" type="Parallax2D" parent="BackGround" unique_id=1504714887]
 scroll_scale = Vector2(0.2, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="BackGround/FarBackground"]
+[node name="Sprite2D" type="Sprite2D" parent="BackGround/FarBackground" unique_id=868918553]
 texture = ExtResource("2_vlfii")
 centered = false
 offset = Vector2(-400, 0)
 
-[node name="MidBackground" type="Parallax2D" parent="BackGround"]
+[node name="MidBackground" type="Parallax2D" parent="BackGround" unique_id=1056964485]
 scroll_scale = Vector2(0.5, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="BackGround/MidBackground"]
+[node name="Sprite2D" type="Sprite2D" parent="BackGround/MidBackground" unique_id=179134056]
 texture = ExtResource("3_vlfii")
 centered = false
 offset = Vector2(-400, 0)
 
-[node name="LevelBounds" type="ReferenceRect" parent="." groups=["level_bounds"]]
+[node name="LevelBounds" type="ReferenceRect" parent="." unique_id=965642193 groups=["level_bounds"]]
 offset_right = 4000.0
 offset_bottom = 900.0
 mouse_filter = 2
 script = ExtResource("4_bounds")
 
-[node name="Player" parent="." instance=ExtResource("2_5yxa8")]
+[node name="Player" parent="." unique_id=1802354584 instance=ExtResource("2_5yxa8")]
 position = Vector2(482, 409)
 
-[node name="Floor" parent="." instance=ExtResource("3_3fj1w")]
+[node name="Floor" parent="." unique_id=1115272502 instance=ExtResource("3_3fj1w")]
 position = Vector2(2000, 900)
 
-[node name="Hud" parent="." instance=ExtResource("8_3pstc")]
+[node name="Hud" parent="." unique_id=1049306987 instance=ExtResource("8_3pstc")]
 
-[node name="HealthTimer" type="Timer" parent="." groups=["health_timer"]]
+[node name="HealthTimer" type="Timer" parent="." unique_id=460037004 groups=["health_timer"]]
 wait_time = 300.0
 script = ExtResource("9_etrrw")
 
-[node name="Music" type="Node" parent="."]
+[node name="Music" type="Node" parent="." unique_id=1239330877]
 script = ExtResource("13_a5wx1")
 
-[node name="option1" type="AudioStreamPlayer" parent="Music"]
+[node name="option1" type="AudioStreamPlayer" parent="Music" unique_id=1115540943]
 stream = ExtResource("13_vlfii")
 
-[node name="option2" type="AudioStreamPlayer" parent="Music"]
+[node name="option2" type="AudioStreamPlayer" parent="Music" unique_id=750082783]
 stream = ExtResource("15_a5wx1")
 
-[node name="CRTLite" type="CanvasLayer" parent="."]
+[node name="CRTLite" type="CanvasLayer" parent="." unique_id=1673745833]
 layer = 100
 script = ExtResource("16_ijn3k")
 metadata/_custom_type_script = "uid://b0xfdybt3kgtw"
 
-[node name="EndPortal" parent="." instance=ExtResource("10_apnan")]
+[node name="EndPortal" parent="." unique_id=105473729 instance=ExtResource("10_apnan")]
+position = Vector2(106, 860)
+
+[node name="Pirate" parent="." unique_id=704724085 instance=ExtResource("14_a5wx1")]
+position = Vector2(1215, 858)
+
+[node name="BigCrystal" parent="." unique_id=978777140 instance=ExtResource("15_ijn3k")]
+position = Vector2(1524, 826)
+
+[node name="PlatformThick" parent="." unique_id=1833812902 instance=ExtResource("16_fany1")]
+position = Vector2(932, 831)
