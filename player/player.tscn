@@ -380,6 +380,7 @@ zoom = Vector2(0.8, 0.8)
 script = ExtResource("2_camera")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_yllr7")
 animation = &"run"
 

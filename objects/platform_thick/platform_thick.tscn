@@ -3,15 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://bi3k82kvh0pu" path="res://art/Small Platform.png" id="1_endtw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppids"]
-size = Vector2(103, 88)
+size = Vector2(103, 15)
 
 [node name="PlatformThick" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-0.5, 20)
+position = Vector2(-0.5, -16.5)
 shape = SubResource("RectangleShape2D_ppids")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_endtw")

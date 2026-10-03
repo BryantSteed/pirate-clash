@@ -49,7 +49,6 @@ position = Vector2(482, 409)
 
 [node name="Floor" parent="." instance=ExtResource("3_3fj1w")]
 position = Vector2(2000, 900)
-script = null
 
 [node name="Pirate" parent="." instance=ExtResource("5_axm81")]
 position = Vector2(1284, 847)

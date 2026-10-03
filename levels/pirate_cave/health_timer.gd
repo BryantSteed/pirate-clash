@@ -1,7 +1,7 @@
 extends Timer
 
-@export var hit_penalty: float = 5.0
-@export var crystal_time_bonus: float = 3.0   # seconds each collected crystal adds; time left is the final score
+@export var hit_penalty: float = 30.0
+@export var crystal_time_bonus: float = 10.0   # seconds each collected crystal adds; time left is the final score
 
 signal time_penalized(amount: float)
 signal time_bonus_added(amount: float)
