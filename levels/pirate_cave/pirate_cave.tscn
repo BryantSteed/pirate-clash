@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://brdjb6lpkcdhw"]
+[gd_scene load_steps=17 format=3 uid="uid://brdjb6lpkcdhw"]
 
 [ext_resource type="Script" uid="uid://dg3r67e2eqamd" path="res://levels/pirate_cave/pirate_cave.gd" id="1_iqt3r"]
 [ext_resource type="PackedScene" uid="uid://cj1po1odwlabg" path="res://player/player.tscn" id="2_5yxa8"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://brcdx6m53mmlu" path="res://objects/platform_thick/platform_thick.tscn" id="13_ve74i"]
 [ext_resource type="AudioStream" uid="uid://b20g17so817l2" path="res://Music and SFX/song.mp3" id="13_vlfii"]
 [ext_resource type="AudioStream" uid="uid://46lo6awoe8b7" path="res://Music and SFX/Main game theme 2.mp3" id="15_a5wx1"]
+[ext_resource type="Script" uid="uid://b0xfdybt3kgtw" path="res://addons/almios_crt_lite/crt_lite.gd" id="16_ijn3k"]
 
 [node name="PirateCave" type="Node2D"]
 script = ExtResource("1_iqt3r")
@@ -76,3 +77,8 @@ stream = ExtResource("13_vlfii")
 
 [node name="option2" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("15_a5wx1")
+
+[node name="CRTLite" type="CanvasLayer" parent="."]
+layer = 100
+script = ExtResource("16_ijn3k")
+metadata/_custom_type_script = "uid://b0xfdybt3kgtw"

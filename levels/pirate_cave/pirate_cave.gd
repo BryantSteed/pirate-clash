@@ -14,6 +14,9 @@ func _ready() -> void:
 	healthTimer.start()
 	healthTimer.timeout.connect(self._on_time_up)
 	$EndPortal.portal_traveled.connect(self._on_portal_entered)
+	$CRTLite.preset = CRTLite.Preset.LIVING_ROOM_TV
+	$CRTLite.set_crt("curvature", 0.01)
+	$CRTLite.set_crt("scanlines", 0.4)
 
 func _on_portal_entered() -> void:
 	print("we did this")
