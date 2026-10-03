@@ -212,7 +212,7 @@ num_crystal_split = 35
 position = Vector2(3484, 767)
 
 [node name="LongWall" parent="." unique_id=1293066575 instance=ExtResource("20_vtxiw")]
-z_index = -2
+z_index = 3
 position = Vector2(3331, 944.00024)
 rotation = -0.5602507
 scale = Vector2(1.3, 1)
