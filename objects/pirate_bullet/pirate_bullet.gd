@@ -2,6 +2,7 @@ class_name PirateBullet
 extends Area2D
 
 const SCENE_PATH := "res://objects/pirate_bullet/pirate_bullet.tscn"
+const CloudScene := preload("res://objects/pirate_cloud/pirate_cloud.tscn")
 
 @export var speed := 400.0
 @export var lifetime := 5.0              # seconds before a missed bullet cleans itself up
@@ -38,4 +39,8 @@ func _on_body_entered(body: Node2D) -> void:
 	var player := body as Player
 	if player:
 		player.hit()
+	else:
+		var cloud = CloudScene.instantiate()
+		cloud.global_position = self.global_position
+		get_parent().add_child(cloud)
 	queue_free()
