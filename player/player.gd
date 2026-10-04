@@ -93,9 +93,16 @@ func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
 	_handle_jump(delta)
 	_handle_horizontal(delta)
+	_handle_down_platform()
 	move_and_slide()
 	_update_animation()
 
+func _handle_down_platform() -> void:
+	if Input.is_action_pressed("down"):
+		self.set_collision_mask_value(5, false)
+	else:
+		self.set_collision_mask_value(5, true)
+		
 
 func _process(_delta: float) -> void:
 	# Aiming is purely visual, so it runs every rendered frame for smooth tracking.
