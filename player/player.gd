@@ -20,12 +20,14 @@ extends CharacterBody2D
 @export var hit_stun_time := 0.5         # after a hit: frozen in place (no gravity/input) and can't be hit again
 @export var air_hand_raise := 30.0       # how far the gun hand moves up while the "jump" pose shows (px)
 @export var muzzle_offset := Vector2(11, 3)  # barrel tip, in GunSprite's local space (from the gun art)
+@export var stick_aim_deadzone := 0.3    # right-stick tilt (0..1) below this is treated as drift
 
 var _coyote_timer := 0.0
 var _jump_buffer_timer := 0.0
 var _fire_cooldown_timer := 0.0
 var _air_shots := 0          # shots fired while airborne since the last landing
 var _stun_timer := 0.0       # > 0 while frozen and invulnerable after a hit (the "hit" animation shows)
+var _stick_aim := Vector2.ZERO   # last right-stick aim direction; ZERO = aim with the mouse
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var gun_pivot: Node2D = $GunPivot
@@ -71,6 +73,12 @@ func _animation_length(anim: StringName) -> float:
 		total += frames.get_frame_duration(anim, i)
 	return total / frames.get_animation_speed(anim)
 
+func _input(event: InputEvent) -> void:
+	# _input (not _unhandled_input) so moving the mouse over the HUD still counts.
+	if event is InputEventMouseMotion:
+		_stick_aim = Vector2.ZERO    # the mouse moved: aim with it again
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	# _unhandled_input (not _input) so clicks on UI buttons don't also fire.
 	var shoot_action_pressed := event.is_action_pressed("shoot")
@@ -107,14 +115,32 @@ func _handle_down_platform() -> void:
 func _process(_delta: float) -> void:
 	# Aiming is purely visual, so it runs every rendered frame for smooth tracking.
 	gun_pivot.visible = _stun_timer <= 0     # the gun disappears while the hit stun lasts
+	_update_stick_aim()
 	_aim_gun()
 
 
+func _update_stick_aim() -> void:
+	# Raw right-stick axes, -1..1 each (+y is down, same as 2D space). A resting stick
+	# still reports small values, so only a tilt past the deadzone takes over the aim;
+	# letting go keeps the last direction.
+	var stick := Vector2(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X), Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y))
+	if stick.length() > stick_aim_deadzone:
+		_stick_aim = stick.normalized()
+
+
+func _aim_target() -> Vector2:
+	# Where the gun points, in global space. Stick aim becomes a far-away point along the
+	# stick direction, so the aiming and shooting code is the same for stick and mouse.
+	if _stick_aim != Vector2.ZERO:
+		return global_position + _stick_aim * 10000.0
+	return get_global_mouse_position()
+
+
 func _aim_gun() -> void:
-	var mouse := get_global_mouse_position()
+	var target := _aim_target()
 	# Which side is decided from the player's center, not the hand, so the swap point
 	# doesn't move as the hand moves (that would make it flicker between hands).
-	var aiming_left := mouse.x < global_position.x
+	var aiming_left := target.x < global_position.x
 
 	# In the air the arm is drawn higher, so raise the hand to match the "jump" pose.
 	var hand := _hand_position
@@ -125,10 +151,10 @@ func _aim_gun() -> void:
 	gun_pivot.position = Vector2(-hand.x if aiming_left else hand.x, hand.y)
 	gun_pivot.scale.x = -1 if aiming_left else 1
 
-	# Rotate about the hand so the barrel (the gun's +x) points at the mouse.
+	# Rotate about the hand so the barrel (the gun's +x) points at the target.
 	# Mirrored, the barrel points along -x, i.e. rotation + PI, hence the + PI.
-	var to_mouse := mouse - gun_pivot.global_position
-	gun_pivot.rotation = to_mouse.angle() + (PI if aiming_left else 0.0)
+	var to_target := target - gun_pivot.global_position
+	gun_pivot.rotation = to_target.angle() + (PI if aiming_left else 0.0)
 
 
 func _update_animation() -> void:
@@ -171,12 +197,12 @@ func _shoot() -> void:
 	# Spawn at the barrel tip. to_global() applies the whole chain (sprite position, pivot
 	# rotation, hand-swap mirror, player position), so this follows the gun however it's aimed.
 	var muzzle := gun_sprite.to_global(muzzle_offset)
-	var mouse := get_global_mouse_position()
-	var dir := muzzle.direction_to(mouse)
-	# If the cursor is on top of or behind the muzzle, muzzle->mouse would point backwards;
+	var target := _aim_target()
+	var dir := muzzle.direction_to(target)
+	# If the cursor is on top of or behind the muzzle, muzzle->target would point backwards;
 	# fall back to the way the barrel is facing.
 	var barrel_dir := (muzzle - gun_sprite.to_global(muzzle_offset - Vector2(10, 0))).normalized()
-	if muzzle.distance_to(mouse) < 20.0 or dir.dot(barrel_dir) < 0:
+	if muzzle.distance_to(target) < 20.0 or dir.dot(barrel_dir) < 0:
 		dir = barrel_dir
 	# Add to the level, not the player, so bullets don't follow the player around.
 	get_parent().add_child(PlayerBullet.create(muzzle, dir, self))
