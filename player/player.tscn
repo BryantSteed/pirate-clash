@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://ramme1bbimiw" path="res://Music and SFX/You Hurt Sound.mp3" id="9_2ieo8"]
 [ext_resource type="AudioStream" uid="uid://dtjrvnkvr1iis" path="res://Music and SFX/Jump grunt.mp3" id="10_2ieo8"]
 [ext_resource type="AudioStream" uid="uid://cfwlqq06qpc2p" path="res://Music and SFX/Crystal Collect.mp3" id="11_2ieo8"]
+[ext_resource type="Texture2D" uid="uid://bodkmrnnpdir3" path="res://art/mouse retical.png" id="12_retic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhfnw"]
 size = Vector2(24.5, 54)
@@ -428,3 +429,10 @@ volume_db = 15.0
 
 [node name="CollectCrystalSound" type="AudioStreamPlayer" parent="." unique_id=337050943]
 stream = ExtResource("11_2ieo8")
+
+[node name="Reticle" type="CanvasLayer" parent="."]
+layer = 110
+
+[node name="Sprite2D" type="Sprite2D" parent="Reticle"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_retic")

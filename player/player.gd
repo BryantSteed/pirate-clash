@@ -21,6 +21,7 @@ extends CharacterBody2D
 @export var air_hand_raise := 30.0       # how far the gun hand moves up while the "jump" pose shows (px)
 @export var muzzle_offset := Vector2(11, 3)  # barrel tip, in GunSprite's local space (from the gun art)
 @export var stick_aim_deadzone := 0.3    # right-stick tilt (0..1) below this is treated as drift
+@export var stick_reticle_distance := 80.0   # how far from the gun hand the reticle sits when aiming with the stick (screen px)
 
 var _coyote_timer := 0.0
 var _jump_buffer_timer := 0.0
@@ -33,6 +34,7 @@ var _stick_aim := Vector2.ZERO   # last right-stick aim direction; ZERO = aim wi
 @onready var gun_pivot: Node2D = $GunPivot
 @onready var _hand_position: Vector2 = gun_pivot.position   # right-hand anchor, as placed in the editor
 @onready var gun_sprite: AnimatedSprite2D = $GunPivot/GunSprite
+@onready var reticle: Sprite2D = $Reticle/Sprite2D   # drawn in place of the OS cursor
 
 signal was_hit
 
@@ -117,6 +119,15 @@ func _process(_delta: float) -> void:
 	gun_pivot.visible = _stun_timer <= 0     # the gun disappears while the hit stun lasts
 	_update_stick_aim()
 	_aim_gun()
+	_update_reticle()
+
+
+func _update_reticle() -> void:
+	# The reticle lives on its own CanvasLayer, so it's placed in screen coordinates.
+	if _stick_aim != Vector2.ZERO:
+		reticle.position = gun_pivot.get_global_transform_with_canvas().origin + _stick_aim * stick_reticle_distance
+	else:
+		reticle.position = get_viewport().get_mouse_position()
 
 
 func _update_stick_aim() -> void:
@@ -181,6 +192,22 @@ func _ready() -> void:
 	# on platforms that are actually under your feet.
 	$PassThroughSensor.body_entered.connect(_pass_through_started)
 	$PassThroughSensor.body_exited.connect(_pass_through_ended)
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN   # the Reticle sprite replaces the OS cursor
+
+
+func _exit_tree() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE  # leaving the level: menus need the normal cursor
+
+
+func _notification(what: int) -> void:
+	# While the game is paused this node stops processing, so the reticle would freeze;
+	# hand the pause menu the normal cursor instead.
+	if what == NOTIFICATION_PAUSED:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		reticle.visible = false
+	elif what == NOTIFICATION_UNPAUSED:
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+		reticle.visible = true
 	
 func _pass_through_started(node: Node2D) -> void:
 	add_collision_exception_with(node)
