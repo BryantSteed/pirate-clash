@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwaujc8kotxcx"]
+[gd_scene format=3 uid="uid://bwaujc8kotxcx"]
 
 [ext_resource type="Script" uid="uid://t8yqjnbhl5g" path="res://objects/pirate_bullet/pirate_bullet.gd" id="1_8xoiq"]
 [ext_resource type="Texture2D" uid="uid://barek40oyggse" path="res://art/Bullet Sprite Sheet.png" id="2_u7y4u"]
@@ -79,18 +79,18 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sj2sm")
 }],
-"loop": true,
+"loop": 1,
 "name": &"shooting",
 "speed": 5.0
 }]
 
-[node name="PirateBullet" type="Area2D"]
-collision_mask = 5
+[node name="PirateBullet" type="Area2D" unique_id=86785740]
+collision_mask = 7
 script = ExtResource("1_8xoiq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1285925798]
 shape = SubResource("RectangleShape2D_54s3a")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=166216541]
 sprite_frames = SubResource("SpriteFrames_i34o5")
 animation = &"shooting"
