@@ -8,6 +8,7 @@ class_name Crystal
 @export var horizontalRandomRange := 75
 @export var baseScale := 1.5
 @export var scaleRandomRange := 0.8
+@export var aggroRange := 300.0
 
 var horizontalSpeed: float
 
@@ -28,10 +29,17 @@ func _physics_process(delta: float) -> void:
 	var ai_direction: float = _do_horizontal(delta)
 	_do_gravity(delta, ai_direction)
 	move_and_slide()
+	
+func _is_aggroed() -> bool:
+	var distFromPlayer = self.global_position.distance_to(playerNode.global_position)
+	return distFromPlayer <= self.aggroRange
+	
 
 func _do_horizontal(delta: float) -> float:
 	var horizontalDeviation := self.playerNode.position.x - self.position.x
 	var ai_direction := -1 if horizontalDeviation > 0 else 1
+	if not _is_aggroed():
+		ai_direction = 0.0
 	if is_on_floor():
 		self.velocity.x = ai_direction * horizontalSpeed
 	if is_on_wall() and is_on_floor():
