@@ -9,6 +9,8 @@ extends CharacterBody2D
 @export var horizontal_ground_speed := 100
 @export var horizontal_air_speed := 100
 @export var jump_strength := -500
+@export var nonDeathHitCrystalCount := 1
+@export var deathHitCrystalCount := 3
 
 var _health := 0
 var _hurt_timer := 0.0                   # > 0 while showing "hurt"
@@ -64,7 +66,7 @@ func _physics_process(delta: float) -> void:
 			var cloudSceneInstance := cloudScene.instantiate()
 			cloudSceneInstance.global_position = self.global_position
 			get_parent().add_child(cloudSceneInstance)
-			for i in range(3):
+			for i in range(self.deathHitCrystalCount):
 				_spawn_crystal()
 			queue_free()                 # the hurt pose was its death; now it's gone
 			return
@@ -115,7 +117,8 @@ func hit() -> void:
 	_health -= 1
 	if _health > 0:
 		$HurtSound.play()
-		_spawn_crystal()
+		for i in range(self.nonDeathHitCrystalCount):
+			_spawn_crystal()
 	else:
 		$DeathSound.play()
 	_hurt_timer = hurt_time
@@ -143,4 +146,6 @@ func _shoot() -> void:
 	if muzzle.distance_to(target.global_position) < 20.0 or dir.dot(barrel_dir) < 0:
 		dir = barrel_dir
 	# Add to the level, not the pirate, so bullets don't move or die with the pirate.
-	get_parent().add_child(PirateBullet.create(muzzle, dir, self))
+	var bullet = PirateBullet.create(muzzle, dir, self)
+	bullet.scale = self.scale
+	get_parent().add_child(bullet)

@@ -93,9 +93,16 @@ func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
 	_handle_jump(delta)
 	_handle_horizontal(delta)
+	_handle_down_platform()
 	move_and_slide()
 	_update_animation()
 
+func _handle_down_platform() -> void:
+	if Input.is_action_pressed("down"):
+		self.set_collision_mask_value(5, false)
+	else:
+		self.set_collision_mask_value(5, true)
+		
 
 func _process(_delta: float) -> void:
 	# Aiming is purely visual, so it runs every rendered frame for smooth tracking.
@@ -235,7 +242,7 @@ func _handle_horizontal(delta: float) -> void:
 	var on_floor := is_on_floor()
 	var rate: float
 	if absf(velocity.x) > speed and signf(direction) != -signf(velocity.x):
-		rate = overspeed_decel                             # carrying extra momentum: let it glide
+		rate = acceleration if on_floor else air_acceleration
 	elif direction != 0:
 		rate = acceleration if on_floor else air_acceleration
 	else:
