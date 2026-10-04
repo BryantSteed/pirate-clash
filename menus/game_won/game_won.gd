@@ -29,8 +29,8 @@ func _ready() -> void:
 		_on_entrance_finished()
 	
 func display_score_labels() -> void:
-	$ScoreLabel.text = $ScoreLabel.text + str(ceil(self.score))
-	$TimeLeftLabel.text = $TimeLeftLabel.text + str(ceil(self.time_left))
+	$ScoreLabel.text = $ScoreLabel.text + str(int(self.score))
+	$TimeLeftLabel.text = $TimeLeftLabel.text + str(int(self.time_left))
 	$CrystalCountLabel.text = $CrystalCountLabel.text + str(crystal_count)
 	
 func display_rank_letter() -> void:
@@ -38,14 +38,14 @@ func display_rank_letter() -> void:
 	$RankDisplay/RankLetter.texture = RANK_TEXTURES.get(rank, RANK_TEXTURES["F"])
 
 func compute_rank() -> void:
-	self.score = time_left * 100
-	if score >= 2000:
+	self.score = time_left + crystal_count
+	if score >= 300:
 		rank = "S"
-	elif score >= 1000:
+	elif score >= 200:
 		rank = "A"
-	elif score >= 700:
+	elif score >= 150:
 		rank = "B"
-	elif score >= 500:
+	elif score >= 120:
 		rank = "C"
 	else:
 		rank = "F"

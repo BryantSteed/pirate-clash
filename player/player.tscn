@@ -374,6 +374,7 @@ animations = [{
 collision_layer = 4
 collision_mask = 17
 script = ExtResource("1_xhfnw")
+acceleration = 1200.0
 
 [node name="MainBodyCollision" type="CollisionShape2D" parent="." unique_id=1215634429]
 position = Vector2(-0.25, 2)
