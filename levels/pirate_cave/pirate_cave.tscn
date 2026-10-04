@@ -110,7 +110,7 @@ num_crystal_split = 2
 
 [node name="Pirate4" parent="." unique_id=499760546 instance=ExtResource("14_a5wx1")]
 position = Vector2(1321, 865)
-shoot_interval = 5.0
+shoot_interval = 3.5
 
 [node name="LongPlatform8" parent="." unique_id=1939861797 instance=ExtResource("19_8seph")]
 z_index = 5
@@ -300,6 +300,8 @@ hurt_time = 0.13
 horizontal_ground_speed = 150
 horizontal_air_speed = 150
 jump_strength = -600
+nonDeathHitCrystalCount = 2
+deathHitCrystalCount = 15
 
 [node name="BigCrystal5" parent="." unique_id=1494428721 instance=ExtResource("15_ijn3k")]
 z_index = -2
@@ -360,6 +362,7 @@ metadata/_edit_lock_ = true
 
 [node name="Pirate" parent="." unique_id=1314552648 instance=ExtResource("14_a5wx1")]
 position = Vector2(1775, 201)
+shoot_interval = 2.5
 
 [node name="LongPlatform6" type="StaticBody2D" parent="." unique_id=884936803]
 position = Vector2(2770, 9)

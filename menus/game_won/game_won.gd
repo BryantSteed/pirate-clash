@@ -27,6 +27,10 @@ func _ready() -> void:
 	display_score_labels()
 	if not went_through_portal:
 		_on_entrance_finished()
+	$"Restart Button".pressed.connect(OnRestartButtonPressed)	
+	
+func OnRestartButtonPressed() -> void:	
+	get_tree().change_scene_to_file("res://levels/pirate_cave/pirate_cave.tscn")
 	
 func display_score_labels() -> void:
 	$ScoreLabel.text = $ScoreLabel.text + str(int(self.score))
