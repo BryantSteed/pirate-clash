@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8ryd5ef881xm"]
+[gd_scene format=3 uid="uid://c8ryd5ef881xm"]
 
 [ext_resource type="AudioStream" uid="uid://dkuw47gg6m0j4" path="res://Music and SFX/Door Enter Sound.mp3" id="1_gm7wb"]
 [ext_resource type="Script" uid="uid://b55ibro6ef1t5" path="res://menus/game_won/game_won.gd" id="1_vkrop"]
@@ -8,33 +8,33 @@
 [ext_resource type="AudioStream" uid="uid://nlqo3atmnvcm" path="res://Music and SFX/F C Rank Song.mp3" id="6_8wg1d"]
 [ext_resource type="FontFile" uid="uid://fxx5ooc68evs" path="res://art/Crystal.ttf" id="7_awnw1"]
 
-[node name="GameWon" type="Node"]
+[node name="GameWon" type="Node" unique_id=1575903603]
 script = ExtResource("1_vkrop")
 
-[node name="DoorEntrance" type="AudioStreamPlayer" parent="."]
+[node name="DoorEntrance" type="AudioStreamPlayer" parent="." unique_id=1767302192]
 stream = ExtResource("1_gm7wb")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=1256554325]
 texture = ExtResource("2_6nnnx")
 centered = false
 
-[node name="Music" type="Node" parent="."]
+[node name="Music" type="Node" parent="." unique_id=2121977170]
 
-[node name="SRank" type="AudioStreamPlayer" parent="Music"]
+[node name="SRank" type="AudioStreamPlayer" parent="Music" unique_id=6510866]
 stream = ExtResource("4_awnw1")
 
-[node name="ABRank" type="AudioStreamPlayer" parent="Music"]
+[node name="ABRank" type="AudioStreamPlayer" parent="Music" unique_id=2135612229]
 stream = ExtResource("5_w4meu")
 
-[node name="CFRank" type="AudioStreamPlayer" parent="Music"]
+[node name="CFRank" type="AudioStreamPlayer" parent="Music" unique_id=406884682]
 stream = ExtResource("6_8wg1d")
 
-[node name="RankDisplay" type="Node2D" parent="."]
+[node name="RankDisplay" type="Node2D" parent="." unique_id=1814631822]
 
-[node name="RankLetter" type="Sprite2D" parent="RankDisplay"]
+[node name="RankLetter" type="Sprite2D" parent="RankDisplay" unique_id=16251322]
 centered = false
 
-[node name="ScoreLabel" type="Label" parent="."]
+[node name="ScoreLabel" type="Label" parent="." unique_id=8718065]
 offset_left = 185.0
 offset_top = 334.0
 offset_right = 237.0
@@ -42,7 +42,7 @@ offset_bottom = 357.0
 theme_override_fonts/font = ExtResource("7_awnw1")
 text = "Score: "
 
-[node name="TimeLeftLabel" type="Label" parent="."]
+[node name="TimeLeftLabel" type="Label" parent="." unique_id=547318680]
 offset_left = 183.0
 offset_top = 304.0
 offset_right = 264.0
@@ -50,7 +50,7 @@ offset_bottom = 327.0
 theme_override_fonts/font = ExtResource("7_awnw1")
 text = "Time Left: "
 
-[node name="CrystalCountLabel" type="Label" parent="."]
+[node name="CrystalCountLabel" type="Label" parent="." unique_id=248163948]
 offset_left = 182.0
 offset_top = 271.0
 offset_right = 222.0

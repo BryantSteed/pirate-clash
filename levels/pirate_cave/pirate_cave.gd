@@ -24,13 +24,15 @@ func _on_portal_entered() -> void:
 	var MenuScene = GameWonMenu.instantiate()
 	MenuScene.crystal_count = $Player.crystal_count
 	MenuScene.time_left = $HealthTimer.time_left
-	var tree := get_tree()
-	tree.root.add_child(MenuScene)
-	tree.current_scene = MenuScene
-	queue_free()
+	MenuScene.went_through_portal = true
+	get_tree().change_scene_to_node(MenuScene)
 
 func _on_time_up() -> void:
-	get_tree().change_scene_to_file("res://menus/game_won/GameWon.tscn")
+	var gameWonScene = GameWonMenu.instantiate()
+	gameWonScene.crystal_count = $Player.crystal_count
+	gameWonScene.time_left = 0.0
+	gameWonScene.went_through_portal = false
+	get_tree().change_scene_to_node(gameWonScene)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):

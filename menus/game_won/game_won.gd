@@ -3,6 +3,8 @@ extends Node
 # These two should be externally set at instantiaton time
 var crystal_count: int
 var time_left: float
+var went_through_portal: bool
+
 var score: float
 var rank: String
 
@@ -17,11 +19,14 @@ const RANK_TEXTURES := {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$DoorEntrance.play()
-	$DoorEntrance.finished.connect(_on_entrance_finished)
+	if went_through_portal:
+		$DoorEntrance.play()
+		$DoorEntrance.finished.connect(_on_entrance_finished)
 	compute_rank()
 	display_rank_letter()
 	display_score_labels()
+	if not went_through_portal:
+		_on_entrance_finished()
 	
 func display_score_labels() -> void:
 	$ScoreLabel.text = $ScoreLabel.text + str(ceil(self.score))
