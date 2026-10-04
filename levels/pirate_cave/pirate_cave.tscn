@@ -56,12 +56,42 @@ texture = ExtResource("3_vlfii")
 centered = false
 offset = Vector2(-400, 0)
 
-[node name="BigCrystal" parent="BackGround" unique_id=1822127094 instance=ExtResource("15_ijn3k")]
-position = Vector2(1147, 625)
-scale = Vector2(0.4, 0.4)
-num_crystal_split = 2
+[node name="Player" parent="." unique_id=1802354584 instance=ExtResource("2_5yxa8")]
+position = Vector2(136, 860)
 
-[node name="BigCrystal2" parent="BackGround" unique_id=192305628 instance=ExtResource("15_ijn3k")]
+[node name="Floor" parent="." unique_id=1115272502 instance=ExtResource("3_3fj1w")]
+position = Vector2(2000, 900)
+
+[node name="Hud" parent="." unique_id=1049306987 instance=ExtResource("8_3pstc")]
+
+[node name="HealthTimer" type="Timer" parent="." unique_id=460037004 groups=["health_timer"]]
+wait_time = 45.0
+script = ExtResource("9_etrrw")
+
+[node name="Music" type="Node" parent="." unique_id=1239330877]
+script = ExtResource("13_a5wx1")
+
+[node name="option1" type="AudioStreamPlayer" parent="Music" unique_id=1115540943]
+stream = ExtResource("13_vlfii")
+parameters/looping = true
+
+[node name="option2" type="AudioStreamPlayer" parent="Music" unique_id=750082783]
+stream = ExtResource("15_a5wx1")
+parameters/looping = true
+
+[node name="LevelBounds" type="ReferenceRect" parent="." unique_id=965642193 groups=["level_bounds"]]
+offset_right = 3598.0
+offset_bottom = 900.0
+mouse_filter = 2
+script = ExtResource("4_bounds")
+metadata/_edit_lock_ = true
+
+[node name="CRTLite" type="CanvasLayer" parent="." unique_id=1673745833]
+layer = 100
+script = ExtResource("16_ijn3k")
+metadata/_custom_type_script = "uid://b0xfdybt3kgtw"
+
+[node name="BigCrystal12" parent="." unique_id=192305628 instance=ExtResource("15_ijn3k")]
 position = Vector2(1755.0001, 761.99994)
 rotation = -0.20943952
 scale = Vector2(0.5, 0.5)
@@ -70,6 +100,11 @@ num_crystal_split = 4
 [node name="Pirate3" parent="." unique_id=779816441 instance=ExtResource("14_a5wx1")]
 position = Vector2(1870, 634)
 shoot_interval = 3.0
+
+[node name="BigCrystal11" parent="." unique_id=1822127094 instance=ExtResource("15_ijn3k")]
+position = Vector2(1147, 625)
+scale = Vector2(0.4, 0.4)
+num_crystal_split = 2
 
 [node name="Pirate4" parent="." unique_id=499760546 instance=ExtResource("14_a5wx1")]
 position = Vector2(1321, 865)
@@ -101,13 +136,6 @@ scale = Vector2(1.1, 1.5)
 position = Vector2(2707.9998, 465.99997)
 rotation = -1.727876
 scale = Vector2(0.39999998, 1.4999999)
-
-[node name="LevelBounds" type="ReferenceRect" parent="." unique_id=965642193 groups=["level_bounds"]]
-offset_right = 3598.0
-offset_bottom = 900.0
-mouse_filter = 2
-script = ExtResource("4_bounds")
-metadata/_edit_lock_ = true
 
 [node name="Upside down platform" type="StaticBody2D" parent="." unique_id=143479806]
 position = Vector2(1772, 125.00003)
@@ -153,34 +181,6 @@ rotation = 0.12391838
 [node name="TallPlatform" parent="." unique_id=900308588 instance=ExtResource("8_atd8c")]
 z_index = 2
 position = Vector2(687, 838)
-
-[node name="Player" parent="." unique_id=1802354584 instance=ExtResource("2_5yxa8")]
-position = Vector2(136, 860)
-
-[node name="Floor" parent="." unique_id=1115272502 instance=ExtResource("3_3fj1w")]
-position = Vector2(2000, 900)
-
-[node name="Hud" parent="." unique_id=1049306987 instance=ExtResource("8_3pstc")]
-
-[node name="HealthTimer" type="Timer" parent="." unique_id=460037004 groups=["health_timer"]]
-wait_time = 300.0
-script = ExtResource("9_etrrw")
-
-[node name="Music" type="Node" parent="." unique_id=1239330877]
-script = ExtResource("13_a5wx1")
-
-[node name="option1" type="AudioStreamPlayer" parent="Music" unique_id=1115540943]
-stream = ExtResource("13_vlfii")
-parameters/looping = true
-
-[node name="option2" type="AudioStreamPlayer" parent="Music" unique_id=750082783]
-stream = ExtResource("15_a5wx1")
-parameters/looping = true
-
-[node name="CRTLite" type="CanvasLayer" parent="." unique_id=1673745833]
-layer = 100
-script = ExtResource("16_ijn3k")
-metadata/_custom_type_script = "uid://b0xfdybt3kgtw"
 
 [node name="EntrancePortal" parent="." unique_id=791633691 instance=ExtResource("17_8seph")]
 position = Vector2(129, 827)
