@@ -1,34 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://djdnw36i88oj3"]
+[gd_scene format=3 uid="uid://djdnw36i88oj3"]
 
 [ext_resource type="Texture2D" uid="uid://b7q205dgtufb8" path="res://art/Cave Background Deep.png" id="1_g8vb3"]
 [ext_resource type="Script" uid="uid://bps3t4svcdnc6" path="res://menus/options/options.gd" id="2_opts"]
+[ext_resource type="FontFile" uid="uid://fxx5ooc68evs" path="res://art/Crystal.ttf" id="3_6qhw2"]
 
-[node name="Options" type="CanvasLayer"]
+[node name="Options" type="CanvasLayer" unique_id=1011099765]
 process_mode = 3
 layer = 11
 script = ExtResource("2_opts")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1999918595]
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("1_g8vb3")
 centered = false
 
-[node name="HSlider" type="HSlider" parent="."]
+[node name="HSlider" type="HSlider" parent="." unique_id=132994528]
 offset_left = 199.0
 offset_top = 184.0
 offset_right = 464.0
 offset_bottom = 200.0
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="." unique_id=425901484]
 offset_left = 280.0
 offset_top = 230.0
 offset_right = 380.0
 offset_bottom = 266.0
+theme_override_fonts/font = ExtResource("3_6qhw2")
+theme_override_font_sizes/font_size = 26
 text = "Back"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1435758243]
 offset_left = 274.0
-offset_top = 141.0
+offset_top = 137.0
 offset_right = 499.0
-offset_bottom = 164.0
-text = "Volume Dial"
+offset_bottom = 177.0
+theme_override_fonts/font = ExtResource("3_6qhw2")
+theme_override_font_sizes/font_size = 40
+text = "Volume"
