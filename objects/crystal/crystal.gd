@@ -6,6 +6,8 @@ class_name Crystal
 @export var horizonalAirSpeed := 100
 @export var jumpStrength := -500
 @export var horizontalRandomRange := 75
+@export var baseScale := 1.5
+@export var scaleRandomRange := 0.8
 
 var horizontalSpeed: float
 
@@ -18,6 +20,8 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("idle")
 	$PlayerSensor.body_entered.connect(self._on_entered)
 	horizontalSpeed=randf_range(baseHorizontalSpeed-horizontalRandomRange, baseHorizontalSpeed+horizontalRandomRange)
+	var scale_amount := randf_range(baseScale - scaleRandomRange, baseScale + scaleRandomRange)
+	self.scale = Vector2(scale_amount, scale_amount)
 
 
 func _physics_process(delta: float) -> void:
