@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var max_health := 3              # hits to kill (1 = one-shot, as before)
 @export var hurt_time := 0.4             # seconds the "hurt" pose shows; no shooting meanwhile
 @export var muzzle_offset := Vector2(11, 3)  # barrel tip, in the gun sprite's local space (same gun art as the player)
-@export var aggro_distance := 600.0
+@export var aggro_distance := 200.0
 @export var horizontal_ground_speed := 100
 @export var horizontal_air_speed := 100
 @export var jump_strength := -500
