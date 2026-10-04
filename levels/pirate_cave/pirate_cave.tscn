@@ -65,7 +65,7 @@ position = Vector2(2000, 900)
 [node name="Hud" parent="." unique_id=1049306987 instance=ExtResource("8_3pstc")]
 
 [node name="HealthTimer" type="Timer" parent="." unique_id=460037004 groups=["health_timer"]]
-wait_time = 45.0
+wait_time = 90.0
 script = ExtResource("9_etrrw")
 
 [node name="Music" type="Node" parent="." unique_id=1239330877]
