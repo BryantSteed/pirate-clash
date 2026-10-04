@@ -5,6 +5,7 @@ var rank_achieved: String
 
 const PauseMenu := preload("res://menus/pause_menu/pause_menu.tscn")
 const GameWonMenu := preload("res://menus/game_won/GameWon.tscn")
+const MouseRetical := preload("res://art/mouse retical.png")
 
 # This is the count down timer
 @onready var healthTimer := $HealthTimer
@@ -18,6 +19,7 @@ func _ready() -> void:
 	$CRTLite.set_crt("curvature", 0.02)
 	$CRTLite.set_crt("scanlines", 0.4)
 	$CRTLite.set_crt("corner_radius", 0.0)
+	Input.set_custom_mouse_cursor(MouseRetical)
 
 func _on_portal_entered() -> void:
 	print("we did this")
