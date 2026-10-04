@@ -235,7 +235,7 @@ func _handle_horizontal(delta: float) -> void:
 	var on_floor := is_on_floor()
 	var rate: float
 	if absf(velocity.x) > speed and signf(direction) != -signf(velocity.x):
-		rate = overspeed_decel                             # carrying extra momentum: let it glide
+		rate = acceleration if on_floor else air_acceleration
 	elif direction != 0:
 		rate = acceleration if on_floor else air_acceleration
 	else:
