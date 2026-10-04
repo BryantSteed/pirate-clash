@@ -143,4 +143,6 @@ func _shoot() -> void:
 	if muzzle.distance_to(target.global_position) < 20.0 or dir.dot(barrel_dir) < 0:
 		dir = barrel_dir
 	# Add to the level, not the pirate, so bullets don't move or die with the pirate.
-	get_parent().add_child(PirateBullet.create(muzzle, dir, self))
+	var bullet = PirateBullet.create(muzzle, dir, self)
+	bullet.scale = self.scale
+	get_parent().add_child(bullet)
